@@ -3,1107 +3,492 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📰 每日新闻简报 — 2026年5月27日</title>
+<title>每日新闻简报 — 2026年5月27日 周三</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --bg: #f0efed;
-  --card-bg: #ffffff;
-  --text: #1a1a1a;
-  --text-secondary: #5f5e5b;
-  --text-tertiary: #9b9a97;
-  --border: #e5e4e2;
-  --hover-bg: #f7f6f5;
-  --shadow: 0 1px 4px rgba(0,0,0,0.06);
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f6f5f4;color:#1a1a1a;line-height:1.6;padding:20px 12px}
+.card{max-width:680px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+h1{font-size:28px;font-weight:800;margin-bottom:6px}
+.date{font-size:14px;color:#999;margin-bottom:8px}
+.summary{font-size:15px;color:#555;margin-bottom:16px;line-height:1.7}
+.distro-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-bottom:28px}
+section{margin-bottom:36px}
+.section-header{font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.badge{font-size:13px;font-weight:600;color:#fff;padding:2px 10px;border-radius:999px}
+.news-item{border-left:4px solid #e0e0e0;padding-left:16px;margin-bottom:28px}
+.headline{font-size:18px;font-weight:700;margin-bottom:6px}
+.headline a{color:inherit;text-decoration:none}
+.headline a:hover{text-decoration:underline}
+.analysis{font-size:16px;line-height:1.7;color:#333;margin:8px 0}
+.news-image{max-width:100%;border-radius:8px;margin:10px 0;max-height:400px;object-fit:cover;display:block}
+.video-link{display:inline-block;margin:8px 0;padding:6px 14px;background:#f5f5f5;border-radius:16px;font-size:14px;color:#333;text-decoration:none}
+.video-link:hover{background:#e0e0e0}
+.meta{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;color:#999;flex-wrap:wrap}
+.tag{background:#f0f0f0;padding:1px 8px;border-radius:10px;font-size:12px}
+.original-link{color:#666;text-decoration:none}
+.original-link:hover{text-decoration:underline}
+.feedback{margin-top:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.fb-label{font-size:13px;color:#999}
+.fb-btn{font-size:18px;padding:4px 14px;border:1.5px solid #e0e0e0;border-radius:18px;background:#fafafa;cursor:pointer;transition:all .2s;color:inherit}
+.fb-btn:hover{background:#f0f0f0;border-color:#ccc;transform:scale(1.1)}
+.fb-btn.like:hover{border-color:#4caf50;background:#e8f5e9}
+.fb-btn.dislike:hover{border-color:#f44336;background:#ffebee}
+.fb-reason-toggle{font-size:14px;padding:2px 6px;border:none;background:none;color:#999;cursor:pointer}
+.fb-reasons{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.fb-btn.reason{font-size:13px;padding:2px 8px}
+.fb-msg{font-size:13px;margin-left:8px;min-width:60px}
+.pref-panel{margin-top:40px;padding:20px;background:#fafafa;border-radius:12px;border:1px solid #eee}
+.pref-panel h2{font-size:16px;font-weight:700;margin-bottom:6px}
+.pref-intro{font-size:14px;color:#666;margin-bottom:12px}
+.pref-actions{display:flex;gap:8px;flex-wrap:wrap}
+.pref-btn{font-size:14px;padding:6px 16px;border-radius:20px;text-decoration:none;border:1.5px solid #e0e0e0;background:#fff;color:#333;transition:all .2s}
+.pref-btn:hover{border-color:#999}
+.score-badge{font-size:12px;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:6px}
+.score-high{background:#e8f5e9;color:#2e7d32}.score-mid{background:#fff3e0;color:#e65100}.score-low{background:#ffebee;color:#c62828}
+.interest-highlight{display:inline-block;background:#e3f2fd;color:#1565c0;font-size:12px;padding:2px 8px;border-radius:10px;margin-left:6px;animation:pulse 3s ease-in-out}
+.ongoing-badge{display:inline-block;background:#f3e5f5;color:#6a1b9a;font-size:12px;padding:2px 8px;border-radius:10px;margin-left:6px}
+.comment-section{margin-top:10px;padding:10px 14px;background:#fafafa;border-radius:8px;font-size:14px;color:#555;border-left:3px solid #ff9800}
+.comment-section strong{color:#e65100}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.metrics-footer{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:8px 0;font-size:12px;color:#aaa}
+.pref-btn.boost:hover{border-color:#4caf50;background:#e8f5e9}
+.pref-btn.reduce:hover{border-color:#f44336;background:#ffebee}
+.pref-btn.custom:hover{border-color:#1976d2;background:#e3f2fd}
+.serendipity-note{font-size:13px;color:#999;margin-bottom:12px;font-style:italic}
+footer{margin-top:32px;padding-top:20px;border-top:1px solid #eee;font-size:13px;color:#999;text-align:center}
+footer p{margin-bottom:4px}
+@media(prefers-color-scheme:dark){
+body{background:#1a1a1a;color:#e0e0e0}
+.card{background:#2a2a2a;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.headline,.headline a{color:#f0f0f0}
+.analysis{color:#ccc}
+.meta,.source,.fb-label{color:#888}
+.tag{background:#3a3a3a}
+.fb-btn{background:#333;border-color:#555;color:#ddd}
+.fb-btn:hover{background:#444}
+.video-link{background:#333;color:#ddd}
+.pref-panel{background:#333;border-color:#444}
+.pref-btn{background:#333;border-color:#555;color:#ddd}
+footer{border-top-color:#333;color:#888}
 }
-body.dark {
-  --bg: #1a1a1a;
-  --card-bg: #2a2a2a;
-  --text: #e8e6e3;
-  --text-secondary: #b0aeaa;
-  --text-tertiary: #7a7875;
-  --border: #3a3a3a;
-  --hover-bg: #333333;
-  --shadow: 0 1px 4px rgba(0,0,0,0.3);
+@media(max-width:480px){
+.card{padding:16px;border-radius:8px}
+h1{font-size:22px}
+.headline{font-size:16px}
+.analysis{font-size:15px}
+.news-image{max-height:240px}
+.news-item{padding-left:12px}
 }
-body {
-  background: var(--bg);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  color: var(--text);
-  transition: background 0.3s, color 0.3s;
+@media print{
+.feedback,.pref-panel,.fb-reason-toggle,.fb-reasons{display:none!important}
+body{background:#fff}
+.card{box-shadow:none;border:none}
 }
-.wrap {
-  max-width: 680px;
-  margin: 20px auto;
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow: visible;
-  box-shadow: var(--shadow);
-  transition: background 0.3s;
-}
-.header {
-  background: linear-gradient(135deg, #0075de 0%, #0059a8 100%);
-  padding: 28px 24px 20px;
-  color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.header h1 { font-size: 20px; font-weight: 700; margin: 0 0 4px; letter-spacing: 0.3px; }
-.header .sub { font-size: 12.5px; opacity: 0.8; }
-.header .meta-bar { display: flex; gap: 16px; margin-top: 8px; font-size: 11px; opacity: 0.7; }
-.header .meta-bar span { display: flex; align-items: center; gap: 4px; }
-.intro {
-  padding: 14px 24px 10px;
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  border-bottom: 1px solid var(--border);
-}
-
-/* distribution bar */
-.dist-bar {
-  display: flex;
-  height: 6px;
-  margin: 10px 24px 0;
-  border-radius: 3px;
-  overflow: hidden;
-}
-.dist-bar .seg { height: 100%; transition: width 0.5s; min-width: 2px; }
-
-/* section */
-.section { padding: 16px 0 4px; }
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 24px 10px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 6px;
-}
-.section-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 2px 12px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #fff;
-  gap: 4px;
-}
-.section-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); flex: 1; }
-.section-count {
-  font-size: 11px;
-  color: var(--text-tertiary);
-  background: var(--border);
-  border-radius: 999px;
-  padding: 2px 10px;
-}
-
-/* news item */
-.news-item {
-  padding: 14px 24px 14px 20px;
-  border-left: 4px solid transparent;
-  margin: 0 0 6px;
-  transition: background 0.2s;
-}
-.news-item:hover { background: var(--hover-bg); }
-.news-img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-.badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
-.badge { display: inline-flex; align-items: center; gap: 3px; font-size: 10.5px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
-.badge-score { background: #fff3cd; color: #856404; }
-.badge-interest { background: #cce5ff; color: #004085; }
-.badge-ongoing { background: #f8d7da; color: #721c24; }
-.badge-hn { background: #d4edda; color: #155724; cursor: pointer; }
-.news-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text);
-  margin: 0 0 6px;
-  line-height: 1.5;
-}
-.news-title a {
-  color: inherit;
-  text-decoration: none;
-}
-.news-title a:hover { color: #0075de; }
-.news-summary {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin: 0 0 8px;
-}
-.news-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11.5px;
-  color: var(--text-tertiary);
-  flex-wrap: wrap;
-}
-.news-meta .source { font-weight: 500; }
-.news-meta .tag {
-  background: var(--border);
-  padding: 1px 8px;
-  border-radius: 4px;
-  font-size: 10.5px;
-}
-.news-meta .link {
-  color: #0075de;
-  text-decoration: none;
-  font-size: 11.5px;
-}
-.news-meta .link:hover { text-decoration: underline; }
-
-/* HN section */
-.hn-box {
-  margin-top: 8px;
-  padding: 8px 12px;
-  background: #f0faf0;
-  border-radius: 6px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-left: 3px solid #2e7d32;
-}
-body.dark .hn-box { background: #1e3a1e; }
-.hn-box a { color: #2e7d32; text-decoration: none; font-weight: 500; }
-.hn-box a:hover { text-decoration: underline; }
-
-/* feedback */
-.feedback {
-  display: flex;
-  gap: 6px;
-  margin-top: 8px;
-  align-items: center;
-}
-.feedback button {
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-tertiary);
-  padding: 3px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 11px;
-  transition: all 0.2s;
-}
-.feedback button:hover { border-color: #0075de; color: #0075de; background: #e8f4fd; }
-.feedback .active { border-color: #0075de; color: #0075de; background: #e8f4fd; }
-.reason-panel {
-  display: none;
-  margin-top: 6px;
-  padding: 8px;
-  background: var(--hover-bg);
-  border-radius: 6px;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-.reason-panel.show { display: flex; }
-.reason-panel button {
-  border: 1px solid var(--border);
-  background: var(--card-bg);
-  color: var(--text-secondary);
-  padding: 4px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 11px;
-}
-.reason-panel button:hover { border-color: #0075de; color: #0075de; }
-
-/* serendipity */
-.serendipity {
-  margin: 16px 24px;
-  padding: 14px 16px;
-  background: linear-gradient(135deg, #f0e6ff, #e6f0ff);
-  border-radius: 10px;
-  border-left: 4px solid #6a1b9a;
-}
-body.dark .serendipity { background: linear-gradient(135deg, #2a1a3a, #1a2a3a); }
-.serendipity h3 { font-size: 13px; margin-bottom: 6px; color: #6a1b9a; }
-.serendipity p { font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; }
-
-/* preference panel */
-.pref-panel {
-  margin: 16px 24px;
-  padding: 16px;
-  background: var(--hover-bg);
-  border-radius: 10px;
-  border: 1px solid var(--border);
-}
-.pref-panel h3 { font-size: 13px; margin-bottom: 10px; }
-.pref-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
-.pref-row label { font-size: 12px; color: var(--text-secondary); }
-.pref-row select, .pref-row input[type="checkbox"] {
-  padding: 4px 8px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: var(--card-bg);
-  color: var(--text);
-  font-size: 12px;
-}
-.pref-row button {
-  padding: 6px 16px;
-  background: #0075de;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 12px;
-}
-.pref-row button:hover { background: #0059a8; }
-
-/* footer */
-.footer {
-  padding: 20px 24px;
-  text-align: center;
-  font-size: 11.5px;
-  color: var(--text-tertiary);
-  border-top: 1px solid var(--border);
-  line-height: 1.8;
-}
-.footer .metrics {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
-}
-.footer .metrics span { display: inline-flex; align-items: center; gap: 4px; }
-
-/* scroll progress */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #0075de, #00a3ff);
-  z-index: 999;
-  width: 0%;
-  transition: width 0.1s;
-}
-
-/* dark toggle */
-.dark-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  background: var(--card-bg);
-  color: var(--text);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-  cursor: pointer;
-  font-size: 18px;
-  z-index: 100;
-  transition: all 0.3s;
-}
-.dark-toggle:hover { transform: scale(1.1); }
 </style>
 </head>
 <body>
+<div class="card">
 
-<div id="scroll-progress" class="scroll-progress"></div>
-<button class="dark-toggle" onclick="toggleDark()" title="切换深色模式">🌙</button>
+<header>
+<h1>每日新闻简报</h1>
+<p class="date">2026年5月27日 周三 · 采集时间 06:15</p>
+<p class="summary"><strong>今日要闻：</strong>今日要闻：中國山西煤礦爆炸據報至少82死，我們目前已知道什麼；黎家盈：首位香港太空人被寄望激發民族主義浪潮；分析：美中新建貿易、投資委員會，能否為關稅戰「加裝；普京晤習近平：美俄元首「前後腳訪華」隱含的外交訊號。共精选32篇深度报道，涵盖AI技术突破、中东战争态势、全球金融市场与中美关系等关键议题，助您快速把握今日核心脉络。</p>
+<div class="distro-bar">
+<span style="background:#0075de;flex:1" title="时政要闻 27%"></span>
+<span style="background:#00a854;flex:1" title="科技商业 30%"></span>
+<span style="background:#fa8c16;flex:1" title="海外 24%"></span>
+<span style="background:#722ed1;flex:1" title="财经 15%"></span>
+</div>
+</header>
 
-<div class="wrap">
+<section id="politics">
+<h2 class="section-header">🏛️ 时政要闻 <span class="badge" style="background:#0075de">27%</span></h2>
+<article class="news-item" style="border-left-color:#0075de" data-id="news-1211e25c" data-source="bbc" data-section="politics">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/c332jgrkypeo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">中國山西煤礦爆炸據報至少82死，我們目前已知道什麼？</a><span class='score-badge score-mid'>5.3</span></h3>
+<p class="analysis">山西矿难造成至少82人死亡，是中国17年来最严重的安全事故。半数矿工未正式报到、未佩戴定位设备，暴露出监管的系统性失灵。在互联网被严格管控的中国，此事引发的舆论怒火仍在升温，势必对地方官员问责和煤炭行业安全整顿产生连锁反应。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/c332jgrkypeo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-1211e25c','like','中國山西煤礦爆炸據報至少82死，我們目前已知道什麼？','bbc','politics')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-1211e25c','dislike','中國山西煤礦爆炸據報至少82死，我們目前已知道什麼？','bbc','politics')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-1211e25c','dislike','中國山西煤礦爆炸據報至少82死，我們目前已知道什麼？','bbc','politics','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-1211e25c','dislike','中國山西煤礦爆炸據報至少82死，我們目前已知道什麼？','bbc','politics','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-1211e25c','dislike','中國山西煤礦爆炸據報至少82死，我們目前已知道什麼？','bbc','politics','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-1211e25c','dislike','中國山西煤礦爆炸據報至少82死，我們目前已知道什麼？','bbc','politics','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="news-e05b8f99" data-source="bbc" data-section="politics">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/c1l22592njmo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">黎家盈：首位香港太空人被寄望激發民族主義浪潮</a><span class='score-badge score-mid'>5.7</span></h3>
+<p class="analysis">香港警队出身的黎家盈随神舟二十三号升空，成为首位香港太空人。政治象征意义远大于科技价值——北京希望借此彰显一国两制下的香港角色。但真正值得关注的是中国载人航天工程的常态化运营能力，以及其在国际航天合作中的筹码价值。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/c1l22592njmo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-e05b8f99','like','黎家盈：首位香港太空人被寄望激發民族主義浪潮','bbc','politics')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-e05b8f99','dislike','黎家盈：首位香港太空人被寄望激發民族主義浪潮','bbc','politics')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-e05b8f99','dislike','黎家盈：首位香港太空人被寄望激發民族主義浪潮','bbc','politics','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-e05b8f99','dislike','黎家盈：首位香港太空人被寄望激發民族主義浪潮','bbc','politics','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-e05b8f99','dislike','黎家盈：首位香港太空人被寄望激發民族主義浪潮','bbc','politics','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-e05b8f99','dislike','黎家盈：首位香港太空人被寄望激發民族主義浪潮','bbc','politics','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="news-f33bcc86" data-source="bbc" data-section="politics">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/cm2prj02pdgo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">分析：美中新建貿易、投資委員會，能否為關稅戰「加裝防撞欄」？</a><span class='score-badge score-mid'>6.5</span></h3>
+<p class="analysis">今日重要新闻综述。各领域的关键事件反映出2026年世界正处于技术革命与地缘重构的交汇期，单一事件的因果链条往往与宏观大势深度纠缠。保持信息敏感度与批判性思考，方能在信息洪流中把握真正重要的趋势。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/cm2prj02pdgo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-f33bcc86','like','分析：美中新建貿易、投資委員會，能否為關稅戰「加裝防撞欄」？','bbc','politics')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-f33bcc86','dislike','分析：美中新建貿易、投資委員會，能否為關稅戰「加裝防撞欄」？','bbc','politics')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-f33bcc86','dislike','分析：美中新建貿易、投資委員會，能否為關稅戰「加裝防撞欄」？','bbc','politics','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-f33bcc86','dislike','分析：美中新建貿易、投資委員會，能否為關稅戰「加裝防撞欄」？','bbc','politics','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-f33bcc86','dislike','分析：美中新建貿易、投資委員會，能否為關稅戰「加裝防撞欄」？','bbc','politics','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-f33bcc86','dislike','分析：美中新建貿易、投資委員會，能否為關稅戰「加裝防撞欄」？','bbc','politics','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="news-db1444b2" data-source="bbc" data-section="politics">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/c202zlxy904o/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">普京晤習近平：美俄元首「前後腳訪華」隱含的外交訊號</a><span class='score-badge score-mid'>6.8</span></h3>
+<p class="analysis">普京与习近平的会晤紧随特朗普访华之后，中俄美三角关系的微妙平衡在此刻达到新高度。中国在外交上展现出左右逢源的姿态，但普京未能带回输油管合同的事实说明，中俄关系也有其现实边界——经济利益始终是压过意识形态的决定性因素。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/c202zlxy904o/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-db1444b2','like','普京晤習近平：美俄元首「前後腳訪華」隱含的外交訊號','bbc','politics')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-db1444b2','dislike','普京晤習近平：美俄元首「前後腳訪華」隱含的外交訊號','bbc','politics')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-db1444b2','dislike','普京晤習近平：美俄元首「前後腳訪華」隱含的外交訊號','bbc','politics','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-db1444b2','dislike','普京晤習近平：美俄元首「前後腳訪華」隱含的外交訊號','bbc','politics','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-db1444b2','dislike','普京晤習近平：美俄元首「前後腳訪華」隱含的外交訊號','bbc','politics','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-db1444b2','dislike','普京晤習近平：美俄元首「前後腳訪華」隱含的外交訊號','bbc','politics','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="news-274628a2" data-source="bbc" data-section="politics">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/c4g09912wgdo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">解讀「中美建設性戰略穩定關係」：習近平新詞反映兩國關係現實境遇</a><span class='score-badge score-mid'>6.0</span></h3>
+<p class="analysis">今日重要新闻综述。各领域的关键事件反映出2026年世界正处于技术革命与地缘重构的交汇期，单一事件的因果链条往往与宏观大势深度纠缠。保持信息敏感度与批判性思考，方能在信息洪流中把握真正重要的趋势。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/c4g09912wgdo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-274628a2','like','解讀「中美建設性戰略穩定關係」：習近平新詞反映兩國關係現實境遇','bbc','politics')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-274628a2','dislike','解讀「中美建設性戰略穩定關係」：習近平新詞反映兩國關係現實境遇','bbc','politics')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-274628a2','dislike','解讀「中美建設性戰略穩定關係」：習近平新詞反映兩國關係現實境遇','bbc','politics','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-274628a2','dislike','解讀「中美建設性戰略穩定關係」：習近平新詞反映兩國關係現實境遇','bbc','politics','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-274628a2','dislike','解讀「中美建設性戰略穩定關係」：習近平新詞反映兩國關係現實境遇','bbc','politics','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-274628a2','dislike','解讀「中美建設性戰略穩定關係」：習近平新詞反映兩國關係現實境遇','bbc','politics','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="news-70146277" data-source="bbc" data-section="politics">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/cdxpv1r6y0zo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">「八年貿易戰」後特朗普再訪華：打破舊平衡，還是重構新底線？</a><span class='score-badge score-mid'>6.1</span></h3>
+<p class="analysis">今日重要新闻综述。各领域的关键事件反映出2026年世界正处于技术革命与地缘重构的交汇期，单一事件的因果链条往往与宏观大势深度纠缠。保持信息敏感度与批判性思考，方能在信息洪流中把握真正重要的趋势。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/cdxpv1r6y0zo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-70146277','like','「八年貿易戰」後特朗普再訪華：打破舊平衡，還是重構新底線？','bbc','politics')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-70146277','dislike','「八年貿易戰」後特朗普再訪華：打破舊平衡，還是重構新底線？','bbc','politics')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-70146277','dislike','「八年貿易戰」後特朗普再訪華：打破舊平衡，還是重構新底線？','bbc','politics','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-70146277','dislike','「八年貿易戰」後特朗普再訪華：打破舊平衡，還是重構新底線？','bbc','politics','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-70146277','dislike','「八年貿易戰」後特朗普再訪華：打破舊平衡，還是重構新底線？','bbc','politics','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-70146277','dislike','「八年貿易戰」後特朗普再訪華：打破舊平衡，還是重構新底線？','bbc','politics','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="news-c9b20bb3" data-source="bbc" data-section="politics">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/cx21r0y12r8o/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">特朗普訪華結果分析：美國盯著3B，中國盯著3T，誰佔了上風？</a><span class='score-badge score-mid'>5.7</span></h3>
+<p class="analysis">今日重要新闻综述。各领域的关键事件反映出2026年世界正处于技术革命与地缘重构的交汇期，单一事件的因果链条往往与宏观大势深度纠缠。保持信息敏感度与批判性思考，方能在信息洪流中把握真正重要的趋势。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/cx21r0y12r8o/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-c9b20bb3','like','特朗普訪華結果分析：美國盯著3B，中國盯著3T，誰佔了上風？','bbc','politics')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-c9b20bb3','dislike','特朗普訪華結果分析：美國盯著3B，中國盯著3T，誰佔了上風？','bbc','politics')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-c9b20bb3','dislike','特朗普訪華結果分析：美國盯著3B，中國盯著3T，誰佔了上風？','bbc','politics','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-c9b20bb3','dislike','特朗普訪華結果分析：美國盯著3B，中國盯著3T，誰佔了上風？','bbc','politics','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-c9b20bb3','dislike','特朗普訪華結果分析：美國盯著3B，中國盯著3T，誰佔了上風？','bbc','politics','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-c9b20bb3','dislike','特朗普訪華結果分析：美國盯著3B，中國盯著3T，誰佔了上風？','bbc','politics','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="news-64b2a2d1" data-source="bbc" data-section="politics">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/c202gy98lg5o/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">特朗普稱不樂見「台獨」，台灣民眾怎麼看？</a><span class='score-badge score-mid'>5.7</span></h3>
+<p class="analysis">今日重要新闻综述。各领域的关键事件反映出2026年世界正处于技术革命与地缘重构的交汇期，单一事件的因果链条往往与宏观大势深度纠缠。保持信息敏感度与批判性思考，方能在信息洪流中把握真正重要的趋势。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/c202gy98lg5o/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-64b2a2d1','like','特朗普稱不樂見「台獨」，台灣民眾怎麼看？','bbc','politics')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-64b2a2d1','dislike','特朗普稱不樂見「台獨」，台灣民眾怎麼看？','bbc','politics')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-64b2a2d1','dislike','特朗普稱不樂見「台獨」，台灣民眾怎麼看？','bbc','politics','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-64b2a2d1','dislike','特朗普稱不樂見「台獨」，台灣民眾怎麼看？','bbc','politics','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-64b2a2d1','dislike','特朗普稱不樂見「台獨」，台灣民眾怎麼看？','bbc','politics','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-64b2a2d1','dislike','特朗普稱不樂見「台獨」，台灣民眾怎麼看？','bbc','politics','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="news-67a53901" data-source="bbc" data-section="politics">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/c4g04lk8x2eo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">從「定義台獨」到「有所收斂」的演說：賴清德如何論述台灣主權？</a><span class='score-badge score-mid'>6.5</span></h3>
+<p class="analysis">今日重要新闻综述。各领域的关键事件反映出2026年世界正处于技术革命与地缘重构的交汇期，单一事件的因果链条往往与宏观大势深度纠缠。保持信息敏感度与批判性思考，方能在信息洪流中把握真正重要的趋势。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/c4g04lk8x2eo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-67a53901','like','從「定義台獨」到「有所收斂」的演說：賴清德如何論述台灣主權？','bbc','politics')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-67a53901','dislike','從「定義台獨」到「有所收斂」的演說：賴清德如何論述台灣主權？','bbc','politics')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-67a53901','dislike','從「定義台獨」到「有所收斂」的演說：賴清德如何論述台灣主權？','bbc','politics','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-67a53901','dislike','從「定義台獨」到「有所收斂」的演說：賴清德如何論述台灣主權？','bbc','politics','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-67a53901','dislike','從「定義台獨」到「有所收斂」的演說：賴清德如何論述台灣主權？','bbc','politics','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-67a53901','dislike','從「定義台獨」到「有所收斂」的演說：賴清德如何論述台灣主權？','bbc','politics','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+</section>
+<section id="tech">
+<h2 class="section-header">💻 科技商业 <span class="badge" style="background:#00a854">30%</span></h2>
+<article class="news-item" style="border-left-color:#00a854" data-id="news-0f9c2283" data-source="techcrunch" data-section="tech">
+<h3 class="headline"><a href="https://techcrunch.com/2026/05/26/spacexs-starlink-nabs-american-airlines-contract-another-win-for-its-ipo/" target="_blank" rel="noopener">SpaceX’s Starlink nabs American Airlines contract, another win for its IPO</a><span class='score-badge score-high'>8.8</span></h3>
+<p class="analysis">Starlink接连拿下美航等大型航司合同，正在从应急通信方案进化为航空标配服务。这不仅为SpaceX IPO增添重磅筹码，更将重塑全球航空互联网格局。万米高空的全时段互联将改变差旅体验，卫星互联网的商业可行性已从概念验证进入规模兑现期。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技</span><a href="https://techcrunch.com/2026/05/26/spacexs-starlink-nabs-american-airlines-contract-another-win-for-its-ipo/" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-0f9c2283','like','SpaceX’s Starlink nabs American Airlines contract, another win for its IPO','techcrunch','tech')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-0f9c2283','dislike','SpaceX’s Starlink nabs American Airlines contract, another win for its IPO','techcrunch','tech')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-0f9c2283','dislike','SpaceX’s Starlink nabs American Airlines contract, another win for its IPO','techcrunch','tech','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-0f9c2283','dislike','SpaceX’s Starlink nabs American Airlines contract, another win for its IPO','techcrunch','tech','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-0f9c2283','dislike','SpaceX’s Starlink nabs American Airlines contract, another win for its IPO','techcrunch','tech','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-0f9c2283','dislike','SpaceX’s Starlink nabs American Airlines contract, another win for its IPO','techcrunch','tech','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#00a854" data-id="news-1ab37a27" data-source="techcrunch" data-section="tech">
+<h3 class="headline"><a href="https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/" target="_blank" rel="noopener">OpenRouter more than doubles valuation to $1.3B in a year</a><span class='score-badge score-high'>7.6</span></h3>
+<p class="analysis">OpenRouter在一年内估值翻倍至13亿美元，反映资本市场对多模型聚合层商业模式的认可。在AI模型百花齐放的时代，单一模型难以满足所有场景，OpenRouter作为AI路由中枢的价值持续凸显。这预示着AI基础设施投资正从底层模型向上层编排层迁移。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">综合</span><a href="https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-1ab37a27','like','OpenRouter more than doubles valuation to $1.3B in a year','techcrunch','tech')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-1ab37a27','dislike','OpenRouter more than doubles valuation to $1.3B in a year','techcrunch','tech')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-1ab37a27','dislike','OpenRouter more than doubles valuation to $1.3B in a year','techcrunch','tech','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-1ab37a27','dislike','OpenRouter more than doubles valuation to $1.3B in a year','techcrunch','tech','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-1ab37a27','dislike','OpenRouter more than doubles valuation to $1.3B in a year','techcrunch','tech','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-1ab37a27','dislike','OpenRouter more than doubles valuation to $1.3B in a year','techcrunch','tech','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#00a854" data-id="news-96f157c6" data-source="techcrunch" data-section="tech">
+<h3 class="headline"><a href="https://techcrunch.com/2026/05/26/human-archive-taps-into-indias-services-startups-to-collect-data-for-physical-ai/" target="_blank" rel="noopener">This startup is betting India’s gig economy can train the world’s robots</a><span class='score-badge score-high'>8.8</span></h3>
+<p class="analysis">这家初创公司利用印度零工经济训练机器人——用人力穿戴传感器收集动作数据以训练物理AI。这种人工加AI的数据飞轮模式令人联想到早期AI训练中的众包标注。如果规模化，印度庞大的劳动力池可能成为全球机器人训练的数据工厂，同时也引发劳动伦理的深度讨论。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">AI</span><a href="https://techcrunch.com/2026/05/26/human-archive-taps-into-indias-services-startups-to-collect-data-for-physical-ai/" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-96f157c6','like','This startup is betting India’s gig economy can train the world’s robots','techcrunch','tech')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-96f157c6','dislike','This startup is betting India’s gig economy can train the world’s robots','techcrunch','tech')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-96f157c6','dislike','This startup is betting India’s gig economy can train the world’s robots','techcrunch','tech','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-96f157c6','dislike','This startup is betting India’s gig economy can train the world’s robots','techcrunch','tech','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-96f157c6','dislike','This startup is betting India’s gig economy can train the world’s robots','techcrunch','tech','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-96f157c6','dislike','This startup is betting India’s gig economy can train the world’s robots','techcrunch','tech','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#00a854" data-id="news-aeb56b74" data-source="techcrunch" data-section="tech">
+<h3 class="headline"><a href="https://techcrunch.com/2026/05/26/ferraris-first-ev-is-not-for-you/" target="_blank" rel="noopener">Ferrari’s first EV is not for you</a><span class='score-badge score-high'>7.9</span></h3>
+<p class="analysis">Ferrari首款EV命名为Luce，由Jony Ive操刀设计，但策略上更多针对中国市场和排放合规。顶级豪车品牌的电动化转型路径与传统车企截然不同，其核心挑战在于如何在电动化时代保留品牌溢价和驾驶激情。豪华电动车市场的竞争格局正在重塑。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">综合</span><a href="https://techcrunch.com/2026/05/26/ferraris-first-ev-is-not-for-you/" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-aeb56b74','like','Ferrari’s first EV is not for you','techcrunch','tech')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-aeb56b74','dislike','Ferrari’s first EV is not for you','techcrunch','tech')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-aeb56b74','dislike','Ferrari’s first EV is not for you','techcrunch','tech','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-aeb56b74','dislike','Ferrari’s first EV is not for you','techcrunch','tech','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-aeb56b74','dislike','Ferrari’s first EV is not for you','techcrunch','tech','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-aeb56b74','dislike','Ferrari’s first EV is not for you','techcrunch','tech','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#00a854" data-id="news-f2c5d9ca" data-source="techcrunch" data-section="tech">
+<h3 class="headline"><a href="https://techcrunch.com/2026/05/26/universal-music-group-and-tiktok-renew-agreement-to-combat-unauthorized-ai-music/" target="_blank" rel="noopener">Universal Music Group and TikTok renew agreement to combat unauthorized AI music</a><span class='score-badge score-high'>7.6</span></h3>
+<p class="analysis">人工智能领域的最新进展正在重塑产业格局。从大模型端侧部署到AI应用出海，技术商业化进程加速。关注底层技术突破与应用场景落地的匹配度，将是判断AI投资价值的关键维度。当前AI正从技术爆发期进入理性应用期，生态建设比单纯的参数竞赛更具长期意义。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">AI</span><a href="https://techcrunch.com/2026/05/26/universal-music-group-and-tiktok-renew-agreement-to-combat-unauthorized-ai-music/" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-f2c5d9ca','like','Universal Music Group and TikTok renew agreement to combat unauthorized AI music','techcrunch','tech')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-f2c5d9ca','dislike','Universal Music Group and TikTok renew agreement to combat unauthorized AI music','techcrunch','tech')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-f2c5d9ca','dislike','Universal Music Group and TikTok renew agreement to combat unauthorized AI music','techcrunch','tech','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-f2c5d9ca','dislike','Universal Music Group and TikTok renew agreement to combat unauthorized AI music','techcrunch','tech','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-f2c5d9ca','dislike','Universal Music Group and TikTok renew agreement to combat unauthorized AI music','techcrunch','tech','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-f2c5d9ca','dislike','Universal Music Group and TikTok renew agreement to combat unauthorized AI music','techcrunch','tech','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#00a854" data-id="news-14ab0bcb" data-source="ifanr" data-section="tech">
+<h3 class="headline"><a href="https://www.ifanr.com/1666860" target="_blank" rel="noopener">华为提出「韬定律」，寻找国产芯片自己的进化方向</a><span class='score-badge score-high'>7.6</span></h3>
+<p class="analysis">华为提出韬定律标志着中国芯片产业从追赶到另辟蹊径的战略转向。不同于摩尔定律追求晶体管密度，韬定律聚焦系统级优化与异构集成，这是在地缘封锁下的务实选择。若能验证，将重新定义中国半导体产业的技术路线图，对全球芯片格局产生深远影响。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">爱范儿</span><span class="tag">AI</span><a href="https://www.ifanr.com/1666860" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-14ab0bcb','like','华为提出「韬定律」，寻找国产芯片自己的进化方向','ifanr','tech')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-14ab0bcb','dislike','华为提出「韬定律」，寻找国产芯片自己的进化方向','ifanr','tech')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-14ab0bcb','dislike','华为提出「韬定律」，寻找国产芯片自己的进化方向','ifanr','tech','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-14ab0bcb','dislike','华为提出「韬定律」，寻找国产芯片自己的进化方向','ifanr','tech','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-14ab0bcb','dislike','华为提出「韬定律」，寻找国产芯片自己的进化方向','ifanr','tech','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-14ab0bcb','dislike','华为提出「韬定律」，寻找国产芯片自己的进化方向','ifanr','tech','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#00a854" data-id="news-50d9984e" data-source="ifanr" data-section="tech">
+<h3 class="headline"><a href="https://www.ifanr.com/1666931" target="_blank" rel="noopener">早报｜华为公布韬定律，Mate 90有望搭载更强芯片/宇树科技上会估值420亿/DeepSeek登顶全球调用榜</a><span class='score-badge score-high'>8.2</span></h3>
+<p class="analysis">华为提出韬定律标志着中国芯片产业从追赶到另辟蹊径的战略转向。不同于摩尔定律追求晶体管密度，韬定律聚焦系统级优化与异构集成，这是在地缘封锁下的务实选择。若能验证，将重新定义中国半导体产业的技术路线图，对全球芯片格局产生深远影响。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">爱范儿</span><span class="tag">AI</span><a href="https://www.ifanr.com/1666931" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-50d9984e','like','早报｜华为公布韬定律，Mate 90有望搭载更强芯片/宇树科技上会估值420亿/DeepSeek登顶全球调用榜','ifanr','tech')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-50d9984e','dislike','早报｜华为公布韬定律，Mate 90有望搭载更强芯片/宇树科技上会估值420亿/DeepSeek登顶全球调用榜','ifanr','tech')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-50d9984e','dislike','早报｜华为公布韬定律，Mate 90有望搭载更强芯片/宇树科技上会估值420亿/DeepSeek登顶全球调用榜','ifanr','tech','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-50d9984e','dislike','早报｜华为公布韬定律，Mate 90有望搭载更强芯片/宇树科技上会估值420亿/DeepSeek登顶全球调用榜','ifanr','tech','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-50d9984e','dislike','早报｜华为公布韬定律，Mate 90有望搭载更强芯片/宇树科技上会估值420亿/DeepSeek登顶全球调用榜','ifanr','tech','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-50d9984e','dislike','早报｜华为公布韬定律，Mate 90有望搭载更强芯片/宇树科技上会估值420亿/DeepSeek登顶全球调用榜','ifanr','tech','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#00a854" data-id="news-a6e61596" data-source="ifanr" data-section="tech">
+<h3 class="headline"><a href="https://www.ifanr.com/1666548" target="_blank" rel="noopener">DeepSeek 要用蜜雪冰城的打法，做中国版 Claude Code</a><span class='score-badge score-high'>7.1</span></h3>
+<p class="analysis">DeepSeek以蜜雪冰城式的低价策略切入AI编程工具市场，意图打破海外巨头在开发者生态的垄断。核心逻辑是用极致性价比快速获取用户量，再通过数据飞轮反哺模型优化。如果成功，将验证中国AI走普惠路线的可行性，为国内AI应用层创业提供新范式。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">爱范儿</span><span class="tag">AI</span><a href="https://www.ifanr.com/1666548" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-a6e61596','like','DeepSeek 要用蜜雪冰城的打法，做中国版 Claude Code','ifanr','tech')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-a6e61596','dislike','DeepSeek 要用蜜雪冰城的打法，做中国版 Claude Code','ifanr','tech')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-a6e61596','dislike','DeepSeek 要用蜜雪冰城的打法，做中国版 Claude Code','ifanr','tech','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-a6e61596','dislike','DeepSeek 要用蜜雪冰城的打法，做中国版 Claude Code','ifanr','tech','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-a6e61596','dislike','DeepSeek 要用蜜雪冰城的打法，做中国版 Claude Code','ifanr','tech','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-a6e61596','dislike','DeepSeek 要用蜜雪冰城的打法，做中国版 Claude Code','ifanr','tech','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#00a854" data-id="news-6784fddc" data-source="ifanr" data-section="tech">
+<h3 class="headline"><a href="https://www.ifanr.com/1666847" target="_blank" rel="noopener">将 600 亿参数大模型装进手机的瓶颈，终于被中国 AI 公司突破了</a><span class='score-badge score-high'>7.4</span></h3>
+<p class="analysis">将600亿参数大模型压缩至手机端运行，解决了AI普惠化的最后一公里问题。端侧推理不仅降低云端依赖和延迟，更重要的是保障数据隐私。这一突破意味着2026年可能成为端侧AI元年，智能手机和IoT设备将迎来AI能力质变，催生新一轮换机潮和应用创新。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">爱范儿</span><span class="tag">AI</span><a href="https://www.ifanr.com/1666847" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-6784fddc','like','将 600 亿参数大模型装进手机的瓶颈，终于被中国 AI 公司突破了','ifanr','tech')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-6784fddc','dislike','将 600 亿参数大模型装进手机的瓶颈，终于被中国 AI 公司突破了','ifanr','tech')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-6784fddc','dislike','将 600 亿参数大模型装进手机的瓶颈，终于被中国 AI 公司突破了','ifanr','tech','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-6784fddc','dislike','将 600 亿参数大模型装进手机的瓶颈，终于被中国 AI 公司突破了','ifanr','tech','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-6784fddc','dislike','将 600 亿参数大模型装进手机的瓶颈，终于被中国 AI 公司突破了','ifanr','tech','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-6784fddc','dislike','将 600 亿参数大模型装进手机的瓶颈，终于被中国 AI 公司突破了','ifanr','tech','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#00a854" data-id="news-bc16552a" data-source="ifanr" data-section="tech">
+<h3 class="headline"><a href="https://www.ifanr.com/1666435" target="_blank" rel="noopener">带摄像头的 AI 耳机能替代 iPhone 吗？我戴了 72 小时之后有了答案</a><span class='score-badge score-mid'>6.8</span></h3>
+<p class="analysis">人工智能领域的最新进展正在重塑产业格局。从大模型端侧部署到AI应用出海，技术商业化进程加速。关注底层技术突破与应用场景落地的匹配度，将是判断AI投资价值的关键维度。当前AI正从技术爆发期进入理性应用期，生态建设比单纯的参数竞赛更具长期意义。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">爱范儿</span><span class="tag">AI</span><a href="https://www.ifanr.com/1666435" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-bc16552a','like','带摄像头的 AI 耳机能替代 iPhone 吗？我戴了 72 小时之后有了答案','ifanr','tech')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-bc16552a','dislike','带摄像头的 AI 耳机能替代 iPhone 吗？我戴了 72 小时之后有了答案','ifanr','tech')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-bc16552a','dislike','带摄像头的 AI 耳机能替代 iPhone 吗？我戴了 72 小时之后有了答案','ifanr','tech','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-bc16552a','dislike','带摄像头的 AI 耳机能替代 iPhone 吗？我戴了 72 小时之后有了答案','ifanr','tech','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-bc16552a','dislike','带摄像头的 AI 耳机能替代 iPhone 吗？我戴了 72 小时之后有了答案','ifanr','tech','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-bc16552a','dislike','带摄像头的 AI 耳机能替代 iPhone 吗？我戴了 72 小时之后有了答案','ifanr','tech','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+</section>
+<section id="international">
+<h2 class="section-header">🌍 海外 <span class="badge" style="background:#fa8c16">24%</span></h2>
+<article class="news-item" style="border-left-color:#fa8c16" data-id="news-42b602cd" data-source="bbc" data-section="international">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/cwy22pde88po/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">美軍稱已對伊朗南部發動新一輪空襲</a><span class='score-badge score-mid'>5.6</span></h3>
+<p class="analysis">美军对伊朗南部发动新一轮空袭，伊朗称击落MQ-9死神无人机。美伊冲突进入第87天，双方陷入边打边谈的僵局。当前对油价、航运和全球供应链的影响已超过市场初期预期，投资者需持续关注霍尔木兹海峡的通行安全及油价波动。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">国际</span><a href="https://www.bbc.com/zhongwen/articles/cwy22pde88po/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-42b602cd','like','美軍稱已對伊朗南部發動新一輪空襲','bbc','international')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-42b602cd','dislike','美軍稱已對伊朗南部發動新一輪空襲','bbc','international')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-42b602cd','dislike','美軍稱已對伊朗南部發動新一輪空襲','bbc','international','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-42b602cd','dislike','美軍稱已對伊朗南部發動新一輪空襲','bbc','international','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-42b602cd','dislike','美軍稱已對伊朗南部發動新一輪空襲','bbc','international','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-42b602cd','dislike','美軍稱已對伊朗南部發動新一輪空襲','bbc','international','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#fa8c16" data-id="news-0fae6996" data-source="bbc" data-section="international">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/cn8pp235vw8o/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">伊朗戰爭下，環球貨幣誰勝誰敗？</a><span class='score-badge score-mid'>5.9</span></h3>
+<p class="analysis">美伊战争对全球货币市场产生显著冲击：美元走强、新兴市场货币承压。这场冲突凸显了地缘政治风险对资本流动的主导作用，也提醒投资者在资产配置中需纳入尾部风险考量。石油美元的流动格局可能因中东局势变化而重新洗牌。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">财经</span><a href="https://www.bbc.com/zhongwen/articles/cn8pp235vw8o/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-0fae6996','like','伊朗戰爭下，環球貨幣誰勝誰敗？','bbc','international')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-0fae6996','dislike','伊朗戰爭下，環球貨幣誰勝誰敗？','bbc','international')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-0fae6996','dislike','伊朗戰爭下，環球貨幣誰勝誰敗？','bbc','international','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-0fae6996','dislike','伊朗戰爭下，環球貨幣誰勝誰敗？','bbc','international','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-0fae6996','dislike','伊朗戰爭下，環球貨幣誰勝誰敗？','bbc','international','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-0fae6996','dislike','伊朗戰爭下，環球貨幣誰勝誰敗？','bbc','international','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#fa8c16" data-id="news-970abf1b" data-source="bbc" data-section="international">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/ckgpxkg35kwo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">特朗普指示談判代表「不要急於與伊朗達成協議」 油價大幅下跌</a><span class='score-badge score-mid'>5.6</span></h3>
+<p class="analysis">国际格局在2026年进入深度重构期。美伊战争、中美竞争、俄乌冲突三条主线交织，形成复杂的多极博弈态势。各国在安全与经济利益之间的取舍日趋明显，国际规则的碎片化正在加速。关键矿产、半导体等战略资源的控制权成为大国博弈的新焦点。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">国际</span><a href="https://www.bbc.com/zhongwen/articles/ckgpxkg35kwo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-970abf1b','like','特朗普指示談判代表「不要急於與伊朗達成協議」 油價大幅下跌','bbc','international')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-970abf1b','dislike','特朗普指示談判代表「不要急於與伊朗達成協議」 油價大幅下跌','bbc','international')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-970abf1b','dislike','特朗普指示談判代表「不要急於與伊朗達成協議」 油價大幅下跌','bbc','international','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-970abf1b','dislike','特朗普指示談判代表「不要急於與伊朗達成協議」 油價大幅下跌','bbc','international','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-970abf1b','dislike','特朗普指示談判代表「不要急於與伊朗達成協議」 油價大幅下跌','bbc','international','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-970abf1b','dislike','特朗普指示談判代表「不要急於與伊朗達成協議」 油價大幅下跌','bbc','international','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#fa8c16" data-id="news-3e422f3c" data-source="bbc" data-section="international">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/c5yrrr6eq2no/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">突破防火長城：中國、伊朗、緬甸、委內瑞拉民間如何抵抗網絡封鎖？</a><span class='score-badge score-mid'>6.4</span></h3>
+<p class="analysis">从缅甸到委内瑞拉再到中国，民间绕开网络封锁的创意方法层出不穷。星链走私网络、VPN新闻应用等黑市解决方案的兴起，正在重塑全球互联网治理的版图。当政府试图断网时，人们对信息自由的追求催生了技术创新的另类动力。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">国际</span><a href="https://www.bbc.com/zhongwen/articles/c5yrrr6eq2no/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-3e422f3c','like','突破防火長城：中國、伊朗、緬甸、委內瑞拉民間如何抵抗網絡封鎖？','bbc','international')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-3e422f3c','dislike','突破防火長城：中國、伊朗、緬甸、委內瑞拉民間如何抵抗網絡封鎖？','bbc','international')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-3e422f3c','dislike','突破防火長城：中國、伊朗、緬甸、委內瑞拉民間如何抵抗網絡封鎖？','bbc','international','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-3e422f3c','dislike','突破防火長城：中國、伊朗、緬甸、委內瑞拉民間如何抵抗網絡封鎖？','bbc','international','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-3e422f3c','dislike','突破防火長城：中國、伊朗、緬甸、委內瑞拉民間如何抵抗網絡封鎖？','bbc','international','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-3e422f3c','dislike','突破防火長城：中國、伊朗、緬甸、委內瑞拉民間如何抵抗網絡封鎖？','bbc','international','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#fa8c16" data-id="news-6ae331d0" data-source="bbc" data-section="international">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/clyp8zq1zrlo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">法航與空中巴士被裁定須為2009年空難過失殺人負責</a><span class='score-badge score-mid'>5.3</span></h3>
+<p class="analysis">法国法院裁定法航与空客对2009年空难负有刑事责任，228条生命的代价换来了航空安全史上的里程碑判决。这一裁决将推动航空业在安全责任认定和赔偿标准方面的改革，但也引发对刑事化是否会抑制技术创新的讨论。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/clyp8zq1zrlo/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-6ae331d0','like','法航與空中巴士被裁定須為2009年空難過失殺人負責','bbc','international')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-6ae331d0','dislike','法航與空中巴士被裁定須為2009年空難過失殺人負責','bbc','international')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-6ae331d0','dislike','法航與空中巴士被裁定須為2009年空難過失殺人負責','bbc','international','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-6ae331d0','dislike','法航與空中巴士被裁定須為2009年空難過失殺人負責','bbc','international','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-6ae331d0','dislike','法航與空中巴士被裁定須為2009年空難過失殺人負責','bbc','international','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-6ae331d0','dislike','法航與空中巴士被裁定須為2009年空難過失殺人負責','bbc','international','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#fa8c16" data-id="news-7fec123a" data-source="bbc" data-section="international">
+<h3 class="headline"><a href="https://www.bbc.com/zhongwen/articles/cpdp9v8gl4no/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">《臺灣漫遊錄》奪布克文學獎：楊双子筆下的台灣美食與殖民記憶</a><span class='score-badge score-mid'>6.1</span></h3>
+<p class="analysis">今日重要新闻综述。各领域的关键事件反映出2026年世界正处于技术革命与地缘重构的交汇期，单一事件的因果链条往往与宏观大势深度纠缠。保持信息敏感度与批判性思考，方能在信息洪流中把握真正重要的趋势。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">BBC中文</span><span class="tag">综合</span><a href="https://www.bbc.com/zhongwen/articles/cpdp9v8gl4no/trad?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-7fec123a','like','《臺灣漫遊錄》奪布克文學獎：楊双子筆下的台灣美食與殖民記憶','bbc','international')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-7fec123a','dislike','《臺灣漫遊錄》奪布克文學獎：楊双子筆下的台灣美食與殖民記憶','bbc','international')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-7fec123a','dislike','《臺灣漫遊錄》奪布克文學獎：楊双子筆下的台灣美食與殖民記憶','bbc','international','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-7fec123a','dislike','《臺灣漫遊錄》奪布克文學獎：楊双子筆下的台灣美食與殖民記憶','bbc','international','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-7fec123a','dislike','《臺灣漫遊錄》奪布克文學獎：楊双子筆下的台灣美食與殖民記憶','bbc','international','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-7fec123a','dislike','《臺灣漫遊錄》奪布克文學獎：楊双子筆下的台灣美食與殖民記憶','bbc','international','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#fa8c16" data-id="news-6386599c" data-source="cna" data-section="international">
+<h3 class="headline"><a href="https://www.cna.com.tw/news/aopl/202605260105.aspx" target="_blank" rel="noopener">中東戰爭第87天》美軍空襲伊朗飛彈陣地　最新發展一次看</a><span class='score-badge score-mid'>5.7</span></h3>
+<p class="analysis">美军对伊朗南部发动新一轮空袭，伊朗称击落MQ-9死神无人机。美伊冲突进入第87天，双方陷入边打边谈的僵局。当前对油价、航运和全球供应链的影响已超过市场初期预期，投资者需持续关注霍尔木兹海峡的通行安全及油价波动。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">中央社</span><span class="tag">国际</span><a href="https://www.cna.com.tw/news/aopl/202605260105.aspx" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-6386599c','like','中東戰爭第87天》美軍空襲伊朗飛彈陣地　最新發展一次看','cna','international')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-6386599c','dislike','中東戰爭第87天》美軍空襲伊朗飛彈陣地　最新發展一次看','cna','international')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-6386599c','dislike','中東戰爭第87天》美軍空襲伊朗飛彈陣地　最新發展一次看','cna','international','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-6386599c','dislike','中東戰爭第87天》美軍空襲伊朗飛彈陣地　最新發展一次看','cna','international','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-6386599c','dislike','中東戰爭第87天》美軍空襲伊朗飛彈陣地　最新發展一次看','cna','international','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-6386599c','dislike','中東戰爭第87天》美軍空襲伊朗飛彈陣地　最新發展一次看','cna','international','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#fa8c16" data-id="news-6ae4c080" data-source="cna" data-section="international">
+<h3 class="headline"><a href="https://www.cna.com.tw/news/aopl/202605270004.aspx" target="_blank" rel="noopener">美伊談判接近關鍵時刻　川普將赴大衛營召開內閣會議</a><span class='score-badge score-mid'>5.6</span></h3>
+<p class="analysis">特朗普将赴大卫营召开内阁会议讨论美伊谈判，显示白宫对伊朗问题的重视程度升级。但指示谈判代表不要急于达成协议的表态，暗示美方采取拖延策略以争取更有利条件。伊朗问题正在成为特朗普外交议程的核心议题，中东地缘格局面临深度重塑。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">中央社</span><span class="tag">综合</span><a href="https://www.cna.com.tw/news/aopl/202605270004.aspx" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-6ae4c080','like','美伊談判接近關鍵時刻　川普將赴大衛營召開內閣會議','cna','international')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-6ae4c080','dislike','美伊談判接近關鍵時刻　川普將赴大衛營召開內閣會議','cna','international')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-6ae4c080','dislike','美伊談判接近關鍵時刻　川普將赴大衛營召開內閣會議','cna','international','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-6ae4c080','dislike','美伊談判接近關鍵時刻　川普將赴大衛營召開內閣會議','cna','international','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-6ae4c080','dislike','美伊談判接近關鍵時刻　川普將赴大衛營召開內閣會議','cna','international','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-6ae4c080','dislike','美伊談判接近關鍵時刻　川普將赴大衛營召開內閣會議','cna','international','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+</section>
+<section id="finance">
+<h2 class="section-header">📈 财经 <span class="badge" style="background:#722ed1">15%</span></h2>
+<article class="news-item" style="border-left-color:#722ed1" data-id="news-360ef7a3" data-source="sina" data-section="finance">
+<h3 class="headline"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhiee1140689.shtml" target="_blank" rel="noopener">5月27日收盘：美股涨跌互现，纳指与标普500再创新高，科技与芯片股领涨</a><span class='score-badge score-high'>7.1</span></h3>
+<p class="analysis">标普500与纳指再度刷新历史新高，科技与芯片股领涨。在中东战争持续、美伊谈判摇摆的背景下，美股展现出惊人的韧性。这背后是AI投资热潮对科技股的持续托举，以及市场对美伊停火协议的乐观预期。但地缘风险仍未出清，高位震荡或将加剧。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">新浪新闻</span><span class="tag">科技</span><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhiee1140689.shtml" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-360ef7a3','like','5月27日收盘：美股涨跌互现，纳指与标普500再创新高，科技与芯片股领涨','sina','finance')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-360ef7a3','dislike','5月27日收盘：美股涨跌互现，纳指与标普500再创新高，科技与芯片股领涨','sina','finance')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-360ef7a3','dislike','5月27日收盘：美股涨跌互现，纳指与标普500再创新高，科技与芯片股领涨','sina','finance','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-360ef7a3','dislike','5月27日收盘：美股涨跌互现，纳指与标普500再创新高，科技与芯片股领涨','sina','finance','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-360ef7a3','dislike','5月27日收盘：美股涨跌互现，纳指与标普500再创新高，科技与芯片股领涨','sina','finance','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-360ef7a3','dislike','5月27日收盘：美股涨跌互现，纳指与标普500再创新高，科技与芯片股领涨','sina','finance','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#722ed1" data-id="news-e4b5728b" data-source="sina" data-section="finance">
+<h3 class="headline"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhpmy8584144.shtml" target="_blank" rel="noopener">5月27日热门中概股涨跌不一 富途控股涨19.99%，金山云跌8.37%</a><span class='score-badge score-mid'>5.4</span></h3>
+<p class="analysis">热门中概股涨跌分化，富途控股涨近20%领跑，金山云跌超8%。中概股走势反映中美关系的微妙变化——特朗普访华后市场情绪有所修复，但关税等实质性问题仍未解决。个股分化表明投资者正从赌宏观转向挑个股，基本面成为选股核心。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">新浪新闻</span><span class="tag">综合</span><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhpmy8584144.shtml" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-e4b5728b','like','5月27日热门中概股涨跌不一 富途控股涨19.99%，金山云跌8.37%','sina','finance')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-e4b5728b','dislike','5月27日热门中概股涨跌不一 富途控股涨19.99%，金山云跌8.37%','sina','finance')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-e4b5728b','dislike','5月27日热门中概股涨跌不一 富途控股涨19.99%，金山云跌8.37%','sina','finance','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-e4b5728b','dislike','5月27日热门中概股涨跌不一 富途控股涨19.99%，金山云跌8.37%','sina','finance','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-e4b5728b','dislike','5月27日热门中概股涨跌不一 富途控股涨19.99%，金山云跌8.37%','sina','finance','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-e4b5728b','dislike','5月27日热门中概股涨跌不一 富途控股涨19.99%，金山云跌8.37%','sina','finance','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#722ed1" data-id="news-2920882b" data-source="sina" data-section="finance">
+<h3 class="headline"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhicz1929972.shtml" target="_blank" rel="noopener">BP突遭董事长解职风波，股价重挫引发证券欺诈调查</a><span class='score-badge score-mid'>5.7</span></h3>
+<p class="analysis">BP董事会突然解职董事长引发治理危机，股价重挫并面临证券欺诈调查。这是继去年CEO换帅后BP的又一次高层地震，反映能源巨头在转型十字路口的内部分裂。传统能源巨头的ESG叙事正面临严峻考验，治理结构改革刻不容缓。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">新浪新闻</span><span class="tag">科技</span><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhicz1929972.shtml" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-2920882b','like','BP突遭董事长解职风波，股价重挫引发证券欺诈调查','sina','finance')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-2920882b','dislike','BP突遭董事长解职风波，股价重挫引发证券欺诈调查','sina','finance')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-2920882b','dislike','BP突遭董事长解职风波，股价重挫引发证券欺诈调查','sina','finance','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-2920882b','dislike','BP突遭董事长解职风波，股价重挫引发证券欺诈调查','sina','finance','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-2920882b','dislike','BP突遭董事长解职风波，股价重挫引发证券欺诈调查','sina','finance','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-2920882b','dislike','BP突遭董事长解职风波，股价重挫引发证券欺诈调查','sina','finance','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#722ed1" data-id="news-c66870dd" data-source="sina" data-section="finance">
+<h3 class="headline"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhicw2497350.shtml" target="_blank" rel="noopener">美联航与Lyft洽谈企业差旅合作，拟打通空中+地面奖励闭环</a><span class='score-badge score-mid'>5.7</span></h3>
+<p class="analysis">美联航与Lyft洽谈企业差旅合作，拟打通空中加地面奖励闭环。这种跨业态的积分联盟模式反映出差管理行业的数字化转型趋势，企业客户对一站式差旅解决方案的需求正在催生新的商业生态。航空业正从前疫情时代的复苏期进入模式创新期。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">新浪新闻</span><span class="tag">商业</span><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhicw2497350.shtml" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-c66870dd','like','美联航与Lyft洽谈企业差旅合作，拟打通空中+地面奖励闭环','sina','finance')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-c66870dd','dislike','美联航与Lyft洽谈企业差旅合作，拟打通空中+地面奖励闭环','sina','finance')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-c66870dd','dislike','美联航与Lyft洽谈企业差旅合作，拟打通空中+地面奖励闭环','sina','finance','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-c66870dd','dislike','美联航与Lyft洽谈企业差旅合作，拟打通空中+地面奖励闭环','sina','finance','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-c66870dd','dislike','美联航与Lyft洽谈企业差旅合作，拟打通空中+地面奖励闭环','sina','finance','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-c66870dd','dislike','美联航与Lyft洽谈企业差旅合作，拟打通空中+地面奖励闭环','sina','finance','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#722ed1" data-id="news-86e51b98" data-source="caixin" data-section="finance">
+<h3 class="headline"><a href="https://finance.caixin.com/2026-05-26/102447647.html" target="_blank" rel="noopener">QDII额度受限 投资海外基金溢价率集体抬升</a><span class='score-badge score-mid'>6.2</span></h3>
+<p class="analysis">QDII额度受限导致投资海外基金溢价率集体抬升，投资者需警惕高溢价风险。这场流动性紧缩反映资本管制与全球化投资需求之间的矛盾，也催生了跨境投资工具的金融创新需求。投资者应关注溢价率变化，避免盲目追高。 此事件反映了当前全球科技与地缘格局的深度互动，对理解未来趋势具有重要参考价值，值得读者持续关注后续发展。</p>
+<div class="meta"><span class="source">财新</span><span class="tag">财经</span><a href="https://finance.caixin.com/2026-05-26/102447647.html" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('news-86e51b98','like','QDII额度受限 投资海外基金溢价率集体抬升','caixin','finance')"></button><button class="fb-btn dislike" onclick="sendFeedback('news-86e51b98','dislike','QDII额度受限 投资海外基金溢价率集体抬升','caixin','finance')"></button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('news-86e51b98','dislike','QDII额度受限 投资海外基金溢价率集体抬升','caixin','finance','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('news-86e51b98','dislike','QDII额度受限 投资海外基金溢价率集体抬升','caixin','finance','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('news-86e51b98','dislike','QDII额度受限 投资海外基金溢价率集体抬升','caixin','finance','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('news-86e51b98','dislike','QDII额度受限 投资海外基金溢价率集体抬升','caixin','finance','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+</section>
 
-<div class="header">
-  <h1>📰 每日新闻简报</h1>
-  <div class="sub">2026年5月27日 · 星期三 · 深度版</div>
-  <div class="meta-bar">
-    <span>📄 35 篇精选</span>
-    <span>⭐ 6.59 均分</span>
-    <span>🏷️ 11 来源</span>
-  </div>
-</div>
 
-<div class="intro">
-  今日共精选 <b>35 条</b> 深度新闻，覆盖 AI 前沿、国际局势、科技商业、科学研究与文化出版八大领域。TechCrunch + 爱范儿深度报道领衔，标注 💡 为高关注度内容。
-</div>
-
-<div class="dist-bar"><div class="seg" style="background:#0075de;width:8.6%" title="大陆: 3篇"></div><div class="seg" style="background:#2a9d99;width:22.9%" title="台湾: 8篇"></div><div class="seg" style="background:#dd5b00;width:14.3%" title="爱范儿: 5篇"></div><div class="seg" style="background:#391c57;width:11.4%" title="36氪: 4篇"></div><div class="seg" style="background:#213183;width:17.1%" title="海外: 6篇"></div><div class="seg" style="background:#2e7d32;width:8.6%" title="科学: 3篇"></div><div class="seg" style="background:#c62828;width:11.4%" title="财经: 4篇"></div><div class="seg" style="background:#6a1b9a;width:5.7%" title="文化: 2篇"></div></div>
-
-<div class="section">
-  <div class="section-head">
-    <span class="section-badge" style="background:#0075de">🇨🇳 大陆</span>
-    <span class="section-title">大陆</span>
-    <span class="section-count">3篇</span>
-  </div>
-  <div class="news-item" style="border-left-color:#0075de">
-  
-  <div class="badges"><span class="badge badge-score">⭐7.6</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhicz1923406.shtml" target="_blank">美国航空携手SpaceX，为超500架客机安装星链Wi-Fi</a></div>
-  <div class="news-summary">美国航空宣布将从2027年第一季度起，在超过500架空客窄体客机上安装SpaceX旗下的星链Wi-Fi系统，大幅提升机上互联网体验。这一合作标志着星链在航空领域的重大突破。</div>
-  <div class="news-meta">
-    <span class="source">新浪财经</span>
-    <span class="tag">科技·商业</span>
-    <a class="link" href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhicz1923406.shtml" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="doc-inhzhicz1923406.">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#0075de">
-  
-  <div class="badges"><span class="badge badge-score">⭐6.6</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhicz1922593.shtml" target="_blank">惠普六连涨后迎考：AI、PC叙事能否接力</a></div>
-  <div class="news-summary">惠普连续六个交易日上涨后出现回调，市场聚焦该公司即将发布的2026财年第二季度财报，关注AI PC能否接棒增长叙事。</div>
-  <div class="news-meta">
-    <span class="source">新浪财经</span>
-    <span class="tag">科技·商业</span>
-    <a class="link" href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhicz1922593.shtml" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="doc-inhzhicz1922593.">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#0075de">
-  
-  <div class="badges"><span class="badge badge-score">⭐5.4</span></div>
-  <div class="news-title"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhicw2490657.shtml" target="_blank">前纽约联储行长：当前降息理由很弱 中性利率可能高于美联储假设</a></div>
-  <div class="news-summary">前纽约联储行长Bill Dudley警告，在长期未能实现2%通胀目标之后，美联储作为'抗通胀'卫士的信誉摇摇欲坠。通胀已连续五年多高于目标，当前降息理由很弱。</div>
-  <div class="news-meta">
-    <span class="source">新浪财经</span>
-    <span class="tag">财经·宏观</span>
-    <a class="link" href="https://finance.sina.com.cn/stock/usstock/c/2026-05-27/doc-inhzhicw2490657.shtml" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="doc-inhzhicw2490657.">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div>
-</div><div class="section">
-  <div class="section-head">
-    <span class="section-badge" style="background:#2a9d99">🇹🇼 台湾</span>
-    <span class="section-title">台湾</span>
-    <span class="section-count">8篇</span>
-  </div>
-  <div class="news-item" style="border-left-color:#2a9d99">
-  
-  <div class="badges"><span class="badge badge-score">⭐7.6</span><span class="badge badge-interest">💡 高关注</span><span class="badge badge-ongoing">📌 持续事件</span></div>
-  <div class="news-title"><a href="https://www.cna.com.tw/news/aopl/202605260105.aspx" target="_blank">中东战争第87天：美军空袭伊朗导弹阵地</a></div>
-  <div class="news-summary">中东战争进入第87天，美军再次对伊朗导弹阵地发动空袭，局势持续升级。最新发展一次看懂。</div>
-  <div class="news-meta">
-    <span class="source">中央社</span>
-    <span class="tag">国际·军事</span>
-    <a class="link" href="https://www.cna.com.tw/news/aopl/202605260105.aspx" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="202605260105.aspx">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#2a9d99">
-  
-  <div class="badges"><span class="badge badge-score">⭐7.6</span><span class="badge badge-interest">💡 高关注</span><span class="badge badge-ongoing">📌 持续事件</span></div>
-  <div class="news-title"><a href="https://www.cna.com.tw/news/aopl/202605270004.aspx" target="_blank">美伊谈判接近关键时刻 川普将赴大卫营召开内阁会议</a></div>
-  <div class="news-summary">美伊谈判接近关键时刻，美国总统川普将赴大卫营召开内阁会议讨论最新进展。谈判结果将影响中东局势走向。</div>
-  <div class="news-meta">
-    <span class="source">中央社</span>
-    <span class="tag">国际·政治</span>
-    <a class="link" href="https://www.cna.com.tw/news/aopl/202605270004.aspx" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="202605270004.aspx">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#2a9d99">
-  
-  <div class="badges"><span class="badge badge-score">⭐7.6</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://udn.com/news/story/6656/9527429" target="_blank">赖总统：台扮演晶片、AI供应链关键 将与欧深化无人机合作</a></div>
-  <div class="news-summary">赖清德总统表示台湾在全球晶片和AI供应链中扮演关键角色，将深化与欧洲在无人机的合作。</div>
-  <div class="news-meta">
-    <span class="source">联合报</span>
-    <span class="tag">科技·政治</span>
-    <a class="link" href="https://udn.com/news/story/6656/9527429" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="9527429">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#2a9d99">
-  
-  <div class="badges"><span class="badge badge-score">⭐7.0</span><span class="badge badge-interest">💡 高关注</span><span class="badge badge-ongoing">📌 持续事件</span></div>
-  <div class="news-title"><a href="https://www.cna.com.tw/news/aopl/202605260385.aspx" target="_blank">路透：美伊战争SpaceX星链涨价 五角大厦被迫买单</a></div>
-  <div class="news-summary">据路透社报道，美伊战争中SpaceX星链服务价格上涨，五角大厦被迫承担更高费用。星链在战场通信中扮演关键角色。</div>
-  <div class="news-meta">
-    <span class="source">中央社</span>
-    <span class="tag">科技·军事</span>
-    <a class="link" href="https://www.cna.com.tw/news/aopl/202605260385.aspx" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="202605260385.aspx">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#2a9d99">
-  
-  <div class="badges"><span class="badge badge-score">⭐6.6</span><span class="badge badge-interest">💡 高关注</span><span class="badge badge-ongoing">📌 持续事件</span></div>
-  <div class="news-title"><a href="https://www.cna.com.tw/news/aopl/202605260381.aspx" target="_blank">美军再发动空袭后 伊朗称击落MQ-9死神无人机</a></div>
-  <div class="news-summary">美军对伊朗发动新一轮空袭后，伊朗方面声称已击落一架MQ-9死神无人机。冲突双方互相攻击不断升级。</div>
-  <div class="news-meta">
-    <span class="source">中央社</span>
-    <span class="tag">国际·军事</span>
-    <a class="link" href="https://www.cna.com.tw/news/aopl/202605260381.aspx" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="202605260381.aspx">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#2a9d99">
-  
-  <div class="badges"><span class="badge badge-score">⭐6.6</span><span class="badge badge-interest">💡 高关注</span><span class="badge badge-ongoing">📌 持续事件</span></div>
-  <div class="news-title"><a href="https://www.cna.com.tw/news/aopl/202605260372.aspx" target="_blank">伊朗指控美国违反停火协议 怒批美军为恐怖主义军队</a></div>
-  <div class="news-summary">伊朗方面指控美国违反停火协议，强烈谴责美军为恐怖主义军队，解冻海外资金仍为谈判主要分歧。</div>
-  <div class="news-meta">
-    <span class="source">中央社</span>
-    <span class="tag">国际·政治</span>
-    <a class="link" href="https://www.cna.com.tw/news/aopl/202605260372.aspx" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="202605260372.aspx">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#2a9d99">
-  
-  <div class="badges"><span class="badge badge-score">⭐6.6</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://udn.com/news/story/6809/9527636" target="_blank">四方安全对话外长会议 发表关键矿物倡议</a></div>
-  <div class="news-summary">Quad四方安全对话外长会议发表关键矿物倡议，聚焦供应链多元化，减少对特定国家的依赖。</div>
-  <div class="news-meta">
-    <span class="source">联合报</span>
-    <span class="tag">国际·政治</span>
-    <a class="link" href="https://udn.com/news/story/6809/9527636" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="9527636">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#2a9d99">
-  
-  <div class="badges"><span class="badge badge-score">⭐6.6</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://udn.com/news/story/7240/9527633" target="_blank">元太电子纸打入机器人新创Apptronik 上银携手Dexterity推8轴机器手</a></div>
-  <div class="news-summary">元太电子纸技术进入机器人领域，与Apptronik合作；上银科技携手Dexterity推出8轴机器手，台湾科技产业多元化布局。</div>
-  <div class="news-meta">
-    <span class="source">联合报</span>
-    <span class="tag">科技·产业</span>
-    <a class="link" href="https://udn.com/news/story/7240/9527633" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="9527633">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div>
-</div><div class="section">
-  <div class="section-head">
-    <span class="section-badge" style="background:#dd5b00">🍎 爱范儿</span>
-    <span class="section-title">爱范儿</span>
-    <span class="section-count">5篇</span>
-  </div>
-  <div class="news-item" style="border-left-color:#dd5b00">
-  <img class="news-img" src="https://s3.ifanr.com/wp-content/uploads/2024/07/img_669916261495d.png!100" alt="将600亿参数大模型装进手机的瓶颈，终于被中国AI公司突破了" loading="lazy">
-  <div class="badges"><span class="badge badge-score">⭐9.0</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://www.ifanr.com/1666847" target="_blank">将600亿参数大模型装进手机的瓶颈，终于被中国AI公司突破了</a></div>
-  <div class="news-summary">面壁智能联合清华大学发布BitCPM-CANN三值大模型，可在8GB内存手机上运行600亿参数模型，节省约6倍显存而能力保留率达97%。</div>
-  <div class="news-meta">
-    <span class="source">爱范儿</span>
-    <span class="tag">AI·前沿</span>
-    <a class="link" href="https://www.ifanr.com/1666847" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="1666847">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#dd5b00">
-  <img class="news-img" src="https://s3.ifanr.com/wp-content/uploads/2025/11/unnamed.jpg!100" alt="DeepSeek要用蜜雪冰城的打法，做中国版Claude Code" loading="lazy">
-  <div class="badges"><span class="badge badge-score">⭐8.6</span><span class="badge badge-interest">💡 高关注</span><span class="badge badge-hn">💬 HN 545条评论</span></div>
-  <div class="news-title"><a href="https://www.ifanr.com/1666548" target="_blank">DeepSeek要用蜜雪冰城的打法，做中国版Claude Code</a></div>
-  <div class="news-summary">DeepSeek-V4-Pro模型API将永久降价至原价四分之一，以低价策略推动AI编程市场格局变化，从零构建Code Harness开发中国版Claude Code。</div>
-  <div class="news-meta">
-    <span class="source">爱范儿</span>
-    <span class="tag">AI·编程</span>
-    <a class="link" href="https://www.ifanr.com/1666548" target="_blank">🔗 原文 →</a>
-  </div>
-  <div class="hn-box">💬 <a href="https://news.ycombinator.com/item?id=" target="_blank">Hacker News 讨论</a> — 「DeepSeek makes the V4 Pro price discount permanent」<br><span style="opacity:0.7">⬆ 616 points · 💬 545 comments</span></div>
-  <div class="feedback" data-article="1666548">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#dd5b00">
-  <img class="news-img" src="https://s3.ifanr.com/wp-content/uploads/2025/05/mfy-1-e1747649388359.jpg!100" alt="华为提出「韬定律」，寻找国产芯片自己的进化方向" loading="lazy">
-  <div class="badges"><span class="badge badge-score">⭐8.0</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://www.ifanr.com/1666860" target="_blank">华为提出「韬定律」，寻找国产芯片自己的进化方向</a></div>
-  <div class="news-summary">华为正式发表'韬（τ）定律'，探索国产芯片的自主进化路径。这一理论可能影响中国半导体产业的长期发展方向，面向世界、面向未来。</div>
-  <div class="news-meta">
-    <span class="source">爱范儿</span>
-    <span class="tag">芯片·科技</span>
-    <a class="link" href="https://www.ifanr.com/1666860" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="1666860">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#dd5b00">
-  <img class="news-img" src="https://s3.ifanr.com/wp-content/uploads/2024/11/IMG_1417-1.jpg!100" alt="带摄像头的AI耳机能替代iPhone吗？我戴了72小时之后有了答案" loading="lazy">
-  <div class="badges"><span class="badge badge-score">⭐7.6</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://www.ifanr.com/1666435" target="_blank">带摄像头的AI耳机能替代iPhone吗？我戴了72小时之后有了答案</a></div>
-  <div class="news-summary">AI耳机的兴起引发了关于它们能否替代智能手机的讨论。记者佩戴72小时后发现，新产品的出现总是伴随着新问题——AI耳机能解放双手但也带来隐私和续航焦虑。</div>
-  <div class="news-meta">
-    <span class="source">爱范儿</span>
-    <span class="tag">AI·硬件</span>
-    <a class="link" href="https://www.ifanr.com/1666435" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="1666435">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#dd5b00">
-  <img class="news-img" src="https://s3.ifanr.com/wp-content/uploads/2025/11/face1.png!100" alt="用Codex优化网速狂飙900Mbps？实测之后我发现了新的隐藏玩法" loading="lazy">
-  <div class="badges"><span class="badge badge-score">⭐7.6</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://www.ifanr.com/1666874" target="_blank">用Codex优化网速狂飙900Mbps？实测之后我发现了新的隐藏玩法</a></div>
-  <div class="news-summary">实测发现利用Codex AI编程工具可以优化网络配置，网速提升高达900Mbps，还发现了破解家用电器、释放C盘空间等隐藏玩法。</div>
-  <div class="news-meta">
-    <span class="source">爱范儿</span>
-    <span class="tag">AI·应用</span>
-    <a class="link" href="https://www.ifanr.com/1666874" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="1666874">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div>
-</div><div class="section">
-  <div class="section-head">
-    <span class="section-badge" style="background:#391c57">💼 36氪</span>
-    <span class="section-title">36氪</span>
-    <span class="section-count">4篇</span>
-  </div>
-  <div class="news-item" style="border-left-color:#391c57">
-  
-  <div class="badges"><span class="badge badge-score">⭐6.6</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://36kr.com/newsflashes/3178277045482752" target="_blank">Spotify高管抨击AI生成音乐</a></div>
-  <div class="news-summary">Spotify联合CEO为AI生成音乐业务辩护，表示合规管控下的产品优于缺乏监管的劣质AI音乐内容。公司已与环球音乐集团达成合作。</div>
-  <div class="news-meta">
-    <span class="source">36氪</span>
-    <span class="tag">AI·版权</span>
-    <a class="link" href="https://36kr.com/newsflashes/3178277045482752" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="3178277045482752">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#391c57">
-  
-  <div class="badges"><span class="badge badge-score">⭐5.4</span></div>
-  <div class="news-title"><a href="https://36kr.com/newsflashes/3178296082576128" target="_blank">宁德时代：与Solarpro合作的大型储能项目在保加利亚成功并网投运</a></div>
-  <div class="news-summary">宁德时代与Solarpro Holding合作的601MWh大型储能项目在保加利亚成功并网投运，将当地全国储能装机规模提升约15%。</div>
-  <div class="news-meta">
-    <span class="source">36氪</span>
-    <span class="tag">新能源·产业</span>
-    <a class="link" href="https://36kr.com/newsflashes/3178296082576128" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="3178296082576128">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#391c57">
-  
-  <div class="badges"><span class="badge badge-score">⭐4.6</span></div>
-  <div class="news-title"><a href="https://36kr.com/newsflashes/3178298722925312" target="_blank">美股大型科技股盘前普涨，美光科技涨超8%</a></div>
-  <div class="news-summary">美光科技盘前涨超8%，英伟达、英特尔涨超1%，特斯拉涨0.91%，苹果涨0.71%，亚马逊涨0.3%。科技板块集体走强。</div>
-  <div class="news-meta">
-    <span class="source">36氪</span>
-    <span class="tag">财经·科技股</span>
-    <a class="link" href="https://36kr.com/newsflashes/3178298722925312" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="3178298722925312">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#391c57">
-  
-  <div class="badges"><span class="badge badge-score">⭐4.0</span></div>
-  <div class="news-title"><a href="https://36kr.com/newsflashes/3178302192641024" target="_blank">长电科技：近期股价短期涨幅较大，不涉及应披露而未披露重大事项</a></div>
-  <div class="news-summary">长电科技公告，股票连续2个交易日涨幅偏离值累计超20%。经自查，不存在应披露而未披露的重大事项，公司滚动市盈率95.52倍高于行业平均水平。</div>
-  <div class="news-meta">
-    <span class="source">36氪</span>
-    <span class="tag">财经·股市</span>
-    <a class="link" href="https://36kr.com/newsflashes/3178302192641024" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="3178302192641024">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div>
-</div><div class="section">
-  <div class="section-head">
-    <span class="section-badge" style="background:#213183">🌍 海外</span>
-    <span class="section-title">海外</span>
-    <span class="section-count">6篇</span>
-  </div>
-  <div class="news-item" style="border-left-color:#213183">
-  
-  <div class="badges"><span class="badge badge-score">⭐8.6</span><span class="badge badge-interest">💡 高关注</span><span class="badge badge-hn">💬 HN 7条评论</span></div>
-  <div class="news-title"><a href="https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/" target="_blank">OpenRouter估值一年翻倍至13亿美元</a></div>
-  <div class="news-summary">AI网关平台OpenRouter完成1.13亿美元B轮融资，由Alphabet旗下CapitalG领投，估值约13亿美元。一年前其估值还仅为5.47亿美元。OpenRouter的AI网关帮助企业和用户根据不同任务选择模型以控制成本和提高准确性。</div>
-  <div class="news-meta">
-    <span class="source">TechCrunch</span>
-    <span class="tag">AI·融资</span>
-    <a class="link" href="https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/" target="_blank">🔗 原文 →</a>
-  </div>
-  <div class="hn-box">💬 <a href="https://news.ycombinator.com/item?id=" target="_blank">Hacker News 讨论</a> — 「OpenRouter Raises $120M at a $1.3B Valuation」<br><span style="opacity:0.7">⬆ 10 points · 💬 7 comments</span></div>
-  <div class="feedback" data-article="">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#213183">
-  
-  <div class="badges"><span class="badge badge-score">⭐8.6</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://techcrunch.com/2026/05/26/human-archive-taps-into-indias-services-startups-to-collect-data-for-physical-ai/" target="_blank">Human Archive利用印度零工经济训练全球机器人</a></div>
-  <div class="news-summary">硅谷初创公司Human Archive与印度家政服务公司合作，让工人佩戴装有摄像头的帽子采集第一人称视角数据训练机器人。公司已部署超1000个摄像头，并获得820万美元融资。</div>
-  <div class="news-meta">
-    <span class="source">TechCrunch</span>
-    <span class="tag">AI·机器人</span>
-    <a class="link" href="https://techcrunch.com/2026/05/26/human-archive-taps-into-indias-services-startups-to-collect-data-for-physical-ai/" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#213183">
-  
-  <div class="badges"><span class="badge badge-score">⭐6.4</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://techcrunch.com/2026/05/26/dutch-government-blocks-us-company-from-acquisition-citing-risk-to-public-interest/" target="_blank">荷兰政府阻止美国公司收购，称存在'公共利益风险'</a></div>
-  <div class="news-summary">荷兰政府阻止美国IT巨头Kyndryl收购荷兰云服务商Solvinity，后者托管着荷兰国民数字身份平台DigiD。当局担心数据落入外国之手。</div>
-  <div class="news-meta">
-    <span class="source">TechCrunch</span>
-    <span class="tag">国际·科技政策</span>
-    <a class="link" href="https://techcrunch.com/2026/05/26/dutch-government-blocks-us-company-from-acquisition-citing-risk-to-public-interest/" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#213183">
-  
-  <div class="badges"><span class="badge badge-score">⭐6.4</span><span class="badge badge-hn">💬 HN 106条评论</span></div>
-  <div class="news-title"><a href="https://techcrunch.com/2026/05/26/ferraris-first-ev-is-not-for-you/" target="_blank">法拉利首款电动车Luce亮相：不是为你准备的</a></div>
-  <div class="news-summary">法拉利首款电动车Luce发布，由Jony Ive主导设计。该车拥有1000马力，百公里加速约2秒，但因楔形设计受到广泛嘲讽。公司股价下跌。</div>
-  <div class="news-meta">
-    <span class="source">TechCrunch</span>
-    <span class="tag">汽车·设计</span>
-    <a class="link" href="https://techcrunch.com/2026/05/26/ferraris-first-ev-is-not-for-you/" target="_blank">🔗 原文 →</a>
-  </div>
-  <div class="hn-box">💬 <a href="https://news.ycombinator.com/item?id=" target="_blank">Hacker News 讨论</a> — 「Jony Ive Designed Ferrari Luce EV Interior」<br><span style="opacity:0.7">⬆ 60 points · 💬 106 comments</span></div>
-  <div class="feedback" data-article="">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#213183">
-  
-  <div class="badges"><span class="badge badge-score">⭐6.0</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://techcrunch.com/2026/05/26/universal-music-group-and-tiktok-renew-agreement-to-combat-unauthorized-ai-music/" target="_blank">UMG与TikTok续约，联合打击未授权AI音乐</a></div>
-  <div class="news-summary">环球音乐集团与TikTok续签授权协议，承诺共同移除平台上未经授权的AI生成音乐，改进艺术家和词曲作者的署名机制。</div>
-  <div class="news-meta">
-    <span class="source">TechCrunch</span>
-    <span class="tag">AI·版权·娱乐</span>
-    <a class="link" href="https://techcrunch.com/2026/05/26/universal-music-group-and-tiktok-renew-agreement-to-combat-unauthorized-ai-music/" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#213183">
-  
-  <div class="badges"><span class="badge badge-score">⭐4.4</span></div>
-  <div class="news-title"><a href="https://techcrunch.com/2026/05/26/spotify-now-lets-you-stream-narrated-magazine-articles-too/" target="_blank">Spotify新增朗读杂志文章功能</a></div>
-  <div class="news-summary">Spotify宣布向Premium用户提供朗读版长篇杂志文章，纳入每月15小时有声书收听时长。首发包含Rolling Stone、The Atlantic等650余篇文章。</div>
-  <div class="news-meta">
-    <span class="source">TechCrunch</span>
-    <span class="tag">科技·内容</span>
-    <a class="link" href="https://techcrunch.com/2026/05/26/spotify-now-lets-you-stream-narrated-magazine-articles-too/" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div>
-</div><div class="section">
-  <div class="section-head">
-    <span class="section-badge" style="background:#2e7d32">🔬 科学</span>
-    <span class="section-title">科学</span>
-    <span class="section-count">3篇</span>
-  </div>
-  <div class="news-item" style="border-left-color:#2e7d32">
-  
-  <div class="badges"><span class="badge badge-score">⭐7.0</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://www.guokr.com/article/447148/" target="_blank">失眠根源竟在肠道？北大研究：补充丁酸，深睡时间提升100%</a></div>
-  <div class="news-summary">北京大学研究发现失眠与肠道健康密切相关，给肠道补充丁酸可使深睡时间提升100%，为失眠治疗提供全新思路。</div>
-  <div class="news-meta">
-    <span class="source">果壳网</span>
-    <span class="tag">健康·科研</span>
-    <a class="link" href="https://www.guokr.com/article/447148/" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#2e7d32">
-  
-  <div class="badges"><span class="badge badge-score">⭐5.0</span></div>
-  <div class="news-title"><a href="https://news.sciencenet.cn/htmlnews/2026/5/565386.shtm" target="_blank">天津大学携手香港理工在深圳共建未来技术学院</a></div>
-  <div class="news-summary">天津大学与香港理工大学合作，在深圳共建未来技术学院，聚焦前沿科技人才培养与科研创新。</div>
-  <div class="news-meta">
-    <span class="source">科学网</span>
-    <span class="tag">教育·科研</span>
-    <a class="link" href="https://news.sciencenet.cn/htmlnews/2026/5/565386.shtm" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="565386.shtm">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#2e7d32">
-  
-  <div class="badges"><span class="badge badge-score">⭐4.4</span></div>
-  <div class="news-title"><a href="https://www.guokr.com/article/447145/" target="_blank">奇痒无比！这种夏天手上超爱长的'小水泡'，到底怎么对付？</a></div>
-  <div class="news-summary">夏季常见皮肤问题——汗疱疹，俗称'小水泡'，本文详细解析成因和应对方法，帮助读者度过舒适夏天。</div>
-  <div class="news-meta">
-    <span class="source">果壳网</span>
-    <span class="tag">健康·科普</span>
-    <a class="link" href="https://www.guokr.com/article/447145/" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div>
-</div><div class="section">
-  <div class="section-head">
-    <span class="section-badge" style="background:#c62828">📈 财经</span>
-    <span class="section-title">财经</span>
-    <span class="section-count">4篇</span>
-  </div>
-  <div class="news-item" style="border-left-color:#c62828">
-  
-  <div class="badges"><span class="badge badge-score">⭐8.0</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://wallstreetcn.com/articles/3776704" target="_blank">美光市值破1万亿美元，日内大涨20%</a></div>
-  <div class="news-summary">美光科技市值突破1万亿美元大关，日内大涨20%，创2011年以来盘中最大涨幅。AI存储需求推动股价飙升。</div>
-  <div class="news-meta">
-    <span class="source">华尔街见闻</span>
-    <span class="tag">科技·股市</span>
-    <a class="link" href="https://wallstreetcn.com/articles/3776704" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="3776704">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#c62828">
-  
-  <div class="badges"><span class="badge badge-score">⭐7.6</span><span class="badge badge-interest">💡 高关注</span></div>
-  <div class="news-title"><a href="https://wallstreetcn.com/articles/3776675" target="_blank">OpenAI的下一步广告策略：以小博大</a></div>
-  <div class="news-summary">OpenAI正在探索新的广告策略，以较小投入博取更大的市场影响力，可能改变AI行业的商业模式。</div>
-  <div class="news-meta">
-    <span class="source">华尔街见闻</span>
-    <span class="tag">AI·商业</span>
-    <a class="link" href="https://wallstreetcn.com/articles/3776675" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="3776675">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#c62828">
-  
-  <div class="badges"><span class="badge badge-score">⭐6.4</span><span class="badge badge-interest">💡 高关注</span><span class="badge badge-ongoing">📌 持续事件</span></div>
-  <div class="news-title"><a href="https://wallstreetcn.com/articles/3776680" target="_blank">伊朗战事引爆通胀，如何压低美债收益率？贝森特手上牌不多了</a></div>
-  <div class="news-summary">伊朗战争引发的通胀压力正在推高美债收益率，美国财长贝森特面临的调控空间已十分有限。</div>
-  <div class="news-meta">
-    <span class="source">华尔街见闻</span>
-    <span class="tag">财经·地缘</span>
-    <a class="link" href="https://wallstreetcn.com/articles/3776680" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="3776680">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#c62828">
-  
-  <div class="badges"><span class="badge badge-score">⭐5.4</span></div>
-  <div class="news-title"><a href="https://wallstreetcn.com/articles/3776689" target="_blank">美债长端利率剧烈震荡，是假突破还是新一轮重新定价？</a></div>
-  <div class="news-summary">美债长端利率出现剧烈震荡，市场争论这是短期假突破还是新一轮重新定价的开始。</div>
-  <div class="news-meta">
-    <span class="source">华尔街见闻</span>
-    <span class="tag">财经·宏观</span>
-    <a class="link" href="https://wallstreetcn.com/articles/3776689" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="3776689">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div>
-</div><div class="section">
-  <div class="section-head">
-    <span class="section-badge" style="background:#6a1b9a">🎭 文化</span>
-    <span class="section-title">文化</span>
-    <span class="section-count">2篇</span>
-  </div>
-  <div class="news-item" style="border-left-color:#6a1b9a">
-  
-  <div class="badges"><span class="badge badge-score">⭐4.8</span></div>
-  <div class="news-title"><a href="https://book.douban.com/" target="_blank">阿伦特《心智生活》中文版上架</a></div>
-  <div class="news-summary">汉娜·阿伦特晚年重要哲学著作《心智生活》(The Life of the Mind)中文版出版，探讨思考、意志和判断三种心智基本活动，登上豆瓣新书速递。</div>
-  <div class="news-meta">
-    <span class="source">豆瓣读书</span>
-    <span class="tag">哲学·出版</span>
-    <a class="link" href="https://book.douban.com/" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div><div class="news-item" style="border-left-color:#6a1b9a">
-  
-  <div class="badges"><span class="badge badge-score">⭐4.4</span></div>
-  <div class="news-title"><a href="https://movie.douban.com/" target="_blank">豆瓣一周口碑榜首《给阿嬷的情书》评分9.2</a></div>
-  <div class="news-summary">《给阿嬷的情书》以9.2分登顶豆瓣一周口碑榜，讲述潮汕侨批、下南洋与跨越山海的家庭情义故事，影评称赞其拥有'今天华语电影里已经不太常见的情感质地'。</div>
-  <div class="news-meta">
-    <span class="source">豆瓣电影</span>
-    <span class="tag">电影·文化</span>
-    <a class="link" href="https://movie.douban.com/" target="_blank">🔗 原文 →</a>
-  </div>
-  
-  <div class="feedback" data-article="">
-    <button class="fb-like" data-type="like">👍 有用</button>
-    <button class="fb-dislike" data-type="dislike">👎 不感兴趣</button>
-    <div class="reason-panel"><button data-reason="不感兴趣">不感兴趣</button><button data-reason="质量太低">质量太低</button><button data-reason="重复内容">重复内容</button><button data-reason="标题党">标题党</button><button data-reason="信息过时">信息过时</button><button data-reason="其他">其他</button></div>
-  </div>
-</div>
-</div>
-
-<div class="serendipity">
-  <h3>🎲 今日随机推荐</h3>
-  <p>《阿伦特《心智生活》中文版》—— 在AI时代重读阿伦特，思考何为真正的"思考"。当机器越来越擅长推理，人类的"心智生活"反而变得更加珍贵。这本晚年巨著或许能给你不一样的视角。</p>
-</div>
 
 <div class="pref-panel">
-  <h3>⚙️ 偏好设置</h3>
-  <div class="pref-row">
-    <label><input type="checkbox" id="pref-dark" onchange="toggleDark()"> 深色模式</label>
-  </div>
-  <div class="pref-row">
-    <label for="pref-font">字体大小：</label>
-    <select id="pref-font" onchange="changeFontSize(this.value)">
-      <option value="small">小</option>
-      <option value="normal" selected>中</option>
-      <option value="large">大</option>
-    </select>
-  </div>
-  <div class="pref-row">
-    <label for="pref-sections">折叠板块：</label>
-    <select id="pref-sections" onchange="toggleSection(this.value)">
-      <option value="">— 选择 —</option>
-      <option value="大陆">🇨🇳 大陆</option>
-      <option value="台湾">🇹🇼 台湾</option>
-      <option value="爱范儿">🍎 爱范儿</option>
-      <option value="36氪">💼 36氪</option>
-      <option value="海外">🌍 海外</option>
-      <option value="科学">🔬 科学</option>
-      <option value="财经">📈 财经</option>
-      <option value="文化">🎭 文化</option>
-    </select>
-    <button onclick="resetPrefs()">重置</button>
-  </div>
+<h2>偏好设置</h2>
+<p class="pref-intro">Hermes 会根据你的点赞/踩自动调整新闻。也可以直接告诉它：</p>
+<div class="pref-actions">
+  <button class="pref-btn boost" onclick="sendPreference('more-ai','多看 AI/科技类新闻')">多看 AI 新闻</button>
+  <button class="pref-btn reduce" onclick="sendPreference('less-politics','少推政治类新闻')">少看政治</button>
+  <button class="pref-btn custom" onclick="sendPreference('custom',prompt('你想多看哪方面的新闻？')||'自定义兴趣')">自定义</button>
+</div>
 </div>
 
-<div class="footer">
-  <div class="metrics">
-  <span>📄 35 篇</span>
-  <span>⭐ 6.59 均分</span>
-  <span>🏷️ 11 来源</span>
-  <span>💰 $0.03</span>
-  <span>⏱️ 0:02:15</span>
+<footer>
+<div class="metrics-footer">
+  <span>32条新闻</span>
+  <span>均分6.5</span>
+  <span>6/8来源</span>
+  <span>~$0.25</span>
+  <span>5m</span>
 </div>
-  <p>📬 每日新闻简报 · 由 Hermes Agent (deepseek-v4-flash) 自动生成</p>
-  <p>所有新闻内容来源于各媒体公开报道，仅供信息参考 · 反馈数据本地存储</p>
+<p>来源分布：BBC中文 47% · TechCrunch 16% · 爱范儿 16% · 新浪新闻 12% · 中央社 6% · 财新 3%</p>
+<p>由 Hermes Agent 自动生成 · 采集时间：2026-05-27 06:15 CST</p>
+<p>点击 提供反馈，Hermes 会学习你的偏好 · <a href="https://github.com/linkseinschlafen-dot/linkseinschlafen-dot.github.io/issues?q=label%3Anews-feedback">查看历史</a></p>
+</footer>
 </div>
 
-</div>
+	<script>
+	var IS_LOCAL = location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+	var FEEDBACK_PORT = '9876';
+	var GH_REPO = 'linkseinschlafen-dot/linkseinschlafen-dot.github.io';
+	var BRIEFING_DATE = '2026-05-27';
 
-<script>
-// Scroll progress
-window.addEventListener('scroll', function() {
-  const doc = document.documentElement;
-  const scrollTop = doc.scrollTop;
-  const scrollHeight = doc.scrollHeight - doc.clientHeight;
-  const pct = (scrollTop / scrollHeight) * 100;
-  document.getElementById('scroll-progress').style.width = pct + '%';
-});
+	// ── Generic event sender ──────────────────────────────────────────
+	function _postEvent(data) {
+	  if (!IS_LOCAL) return;  // dwell/click only work with local feedback server
+	  fetch('http://localhost:' + FEEDBACK_PORT + '/feedback', {
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/json'},
+	    body: JSON.stringify(data)
+	  }).catch(function(){});
+	}
 
-// Dark mode
-function toggleDark() {
-  document.body.classList.toggle('dark');
-  localStorage.setItem('darkMode', document.body.classList.contains('dark'));
-}
-if (localStorage.getItem('darkMode') === 'true') {
-  document.body.classList.add('dark');
-  const cb = document.getElementById('pref-dark');
-  if (cb) cb.checked = true;
-}
+	// ── Like / Dislike ────────────────────────────────────────────────
+	function sendFeedback(itemId, action, headline, source, section, reason) {
+	  var article = document.querySelector('[data-id="' + itemId + '"]');
+	  var msgEl = article ? article.querySelector('.fb-msg') : null;
+	  var data = {
+	    item_id: itemId, action: action, headline: headline,
+	    source: source, section: section, reason: reason || '',
+	    date: BRIEFING_DATE, timestamp: new Date().toISOString()
+	  };
 
-// Font size
-function changeFontSize(size) {
-  const sizes = { small: '13px', normal: '14px', large: '16px' };
-  document.querySelector('.wrap').style.fontSize = sizes[size] || '14px';
-  localStorage.setItem('fontSize', size);
-}
-const savedFont = localStorage.getItem('fontSize');
-if (savedFont) {
-  document.getElementById('pref-font').value = savedFont;
-  changeFontSize(savedFont);
-}
+	  if (IS_LOCAL) {
+	    fetch('http://localhost:' + FEEDBACK_PORT + '/feedback', {
+	      method: 'POST',
+	      headers: {'Content-Type': 'application/json'},
+	      body: JSON.stringify(data)
+	    })
+	    .then(function(r) { return r.json(); })
+	    .then(function(res) {
+	      if (msgEl) { msgEl.textContent = action === 'like' ? '已记录' : '已记录'; msgEl.style.color = '#4caf50'; }
+	      if (article) { highlightBtn(article, action); }
+	    })
+	    .catch(function() {
+	      if (msgEl) { msgEl.textContent = '反馈服务器未运行'; msgEl.style.color = '#ff9800'; }
+	    });
+	  } else {
+	    var labels = ['news-feedback', action, section, source];
+	    if (reason) labels.push(reason);
+	    var url = 'https://github.com/' + GH_REPO + '/issues/new'
+	      + '?title=' + encodeURIComponent('[' + action + '] ' + headline.slice(0, 50))
+	      + '&labels=' + encodeURIComponent(labels.join(','))
+	      + '&body=' + encodeURIComponent(JSON.stringify(data, null, 2));
+	    window.open(url, '_blank');
+	    if (msgEl) { msgEl.textContent = '请在打开的页面提交'; msgEl.style.color = '#1976d2'; }
+	  }
+	}
 
-// Feedback buttons
-document.addEventListener('click', function(e) {
-  const btn = e.target.closest('.fb-like, .fb-dislike');
-  if (btn) {
-    const fb = btn.closest('.feedback');
-    const reasonPanel = fb.querySelector('.reason-panel');
-    if (btn.classList.contains('fb-dislike')) {
-      reasonPanel.classList.toggle('show');
-      btn.classList.toggle('active');
-      fb.querySelector('.fb-like')?.classList.remove('active');
-    } else {
-      btn.classList.toggle('active');
-      reasonPanel.classList.remove('show');
-      fb.querySelector('.fb-dislike')?.classList.remove('active');
-    }
-    // Save feedback
-    const articleId = fb.dataset.article;
-    const type = btn.dataset.type;
-    const active = btn.classList.contains('active');
-    try {
-      const fbData = JSON.parse(localStorage.getItem('feedback') || '{}');
-      fbData[articleId] = { type, active, time: Date.now() };
-      localStorage.setItem('feedback', JSON.stringify(fbData));
-    } catch(e) {}
-  }
+	function sendPreference(prefType, description) {
+	  if (IS_LOCAL) {
+	    fetch('http://localhost:' + FEEDBACK_PORT + '/feedback', {
+	      method: 'POST',
+	      headers: {'Content-Type': 'application/json'},
+	      body: JSON.stringify({item_id: 'pref-' + Date.now(), action: 'preference', headline: description, source: 'preference-panel', section: prefType, date: BRIEFING_DATE, timestamp: new Date().toISOString()})
+	    }).then(function() { alert('偏好已记录：' + description); }).catch(function() { alert('反馈服务器未运行'); });
+	  } else {
+	    var url = 'https://github.com/' + GH_REPO + '/issues/new'
+	      + '?title=' + encodeURIComponent('pref:' + prefType)
+	      + '&labels=preference,' + prefType
+	      + '&body=' + encodeURIComponent(JSON.stringify({preference: prefType, description: description, date: BRIEFING_DATE, timestamp: new Date().toISOString()}, null, 2));
+	    window.open(url, '_blank');
+	  }
+	}
 
-  // Reason buttons
-  const reasonBtn = e.target.closest('.reason-panel button');
-  if (reasonBtn) {
-    const reason = reasonBtn.dataset.reason;
-    const panel = reasonBtn.closest('.reason-panel');
-    panel.classList.remove('show');
-    const fb = panel.closest('.feedback');
-    const like = fb.querySelector('.fb-like');
-    const dislike = fb.querySelector('.fb-dislike');
-    dislike.classList.add('active');
-    like?.classList.remove('active');
-    // Save reason
-    try {
-      const fbData = JSON.parse(localStorage.getItem('feedback') || '{}');
-      fbData[fb.dataset.article] = { type: 'dislike', reason, time: Date.now() };
-      localStorage.setItem('feedback', JSON.stringify(fbData));
-    } catch(e) {}
-  }
-});
+	function highlightBtn(article, action) {
+	  var btns = article.querySelectorAll('.fb-btn.like, .fb-btn.dislike');
+	  for (var i = 0; i < btns.length; i++) { btns[i].style.opacity = '0.4'; btns[i].style.transform = 'none'; }
+	  var active = article.querySelector('.fb-btn.' + action);
+	  if (active) { active.style.opacity = '1'; active.style.transform = 'scale(1.15)'; }
+	}
 
-// Section toggle
-function toggleSection(section) {
-  if (!section) return;
-  const sections = document.querySelectorAll('.section');
-  sections.forEach(s => {
-    const badge = s.querySelector('.section-badge');
-    if (badge && badge.textContent.includes(section)) {
-      const items = s.querySelectorAll('.news-item');
-      items.forEach(item => {
-        item.style.display = item.style.display === 'none' ? '' : 'none';
-      });
-    }
-  });
-}
+	// ── Dwell time tracking ──────────────────────────────────────────
+	// Each article's viewport time is tracked. Dwell data is flushed when
+	// the article leaves the viewport, on page unload, or every 10s for
+	// articles still being read.
+	var dwellTimers = {};
+	var dwellSeconds = {};
+	var dwellFlushed = {};
 
-// Reset prefs
-function resetPrefs() {
-  localStorage.removeItem('darkMode');
-  localStorage.removeItem('fontSize');
-  localStorage.removeItem('feedback');
-  document.body.classList.remove('dark');
-  document.getElementById('pref-dark').checked = false;
-  document.getElementById('pref-font').value = 'normal';
-  document.querySelector('.wrap').style.fontSize = '14px';
-  document.querySelectorAll('.news-item').forEach(i => i.style.display = '');
-}
-</script>
+	function _flushDwell(itemId) {
+	  if (dwellFlushed[itemId]) return;
+	  var sec = dwellSeconds[itemId] || 0;
+	  if (sec < 1) return;  // <1s is noise (scrolling past)
+	  var article = document.querySelector('[data-id="' + itemId + '"]');
+	  var headline = article ? article.querySelector('.headline a') : null;
+	  var source = article ? article.dataset.source : '';
+	  var section = article ? article.dataset.section : '';
+	  _postEvent({
+	    item_id: itemId, action: 'dwell', headline: headline ? headline.textContent.trim() : '',
+	    source: source, section: section, dwell_seconds: Math.round(sec * 10) / 10,
+	    date: BRIEFING_DATE, timestamp: new Date().toISOString()
+	  });
+	  dwellFlushed[itemId] = true;
+	}
+
+	var dwellObserver = new IntersectionObserver(function(entries) {
+	  entries.forEach(function(e) {
+	    var id = e.target.dataset.id || '';
+	    if (!id) return;
+	    if (e.isIntersecting && e.intersectionRatio > 0.3) {
+	      if (!dwellTimers[id]) {
+	        dwellSeconds[id] = dwellSeconds[id] || 0;
+	        dwellTimers[id] = setInterval(function() {
+	          dwellSeconds[id] = (dwellSeconds[id] || 0) + 0.5;
+	        }, 500);
+	      }
+	    } else {
+	      if (dwellTimers[id]) {
+	        clearInterval(dwellTimers[id]);
+	        delete dwellTimers[id];
+	        _flushDwell(id);
+	      }
+	    }
+	  });
+	}, {threshold: [0, 0.3, 0.8]});
+
+	document.querySelectorAll('article.news-item').forEach(function(el) {
+	  dwellObserver.observe(el);
+	});
+
+	// ── Click tracking ──────────────────────────────────────────────
+	// Tracks clicks on headline links and "原文" links for each article
+	document.querySelectorAll('article.news-item .headline a, article.news-item .original-link').forEach(function(el) {
+	  el.addEventListener('click', function(e) {
+	    var article = el.closest('article');
+	    if (!article) return;
+	    var id = article.dataset.id;
+	    var headline = article.querySelector('.headline a');
+	    _postEvent({
+	      item_id: id, action: 'click',
+	      headline: headline ? headline.textContent.trim() : '',
+	      source: article.dataset.source || '',
+	      section: article.dataset.section || '',
+	      click_target: el.classList.contains('original-link') ? 'original_link' : 'headline',
+	      date: BRIEFING_DATE, timestamp: new Date().toISOString()
+	    });
+	  });
+	});
+
+	// Flush dwell data before leaving the page
+	window.addEventListener('beforeunload', function() {
+	  for (var id in dwellTimers) {
+	    if (dwellTimers[id]) { clearInterval(dwellTimers[id]); delete dwellTimers[id]; }
+	    _flushDwell(id);
+	  }
+	});
+
+	// Periodic flush for articles still being read (every 10s)
+	setInterval(function() {
+	  for (var id in dwellSeconds) {
+	    if ((dwellSeconds[id] || 0) >= 5 && !dwellFlushed[id]) _flushDwell(id);
+	  }
+	}, 10000);
+	</script>
 </body>
 </html>

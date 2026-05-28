@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日新闻简报 — 2026年5月29日 周四</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f6f5f4;color:#1a1a1a;line-height:1.6;padding:20px 12px}
+.card{max-width:680px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+h1{font-size:28px;font-weight:800;margin-bottom:6px}
+.date{font-size:14px;color:#999;margin-bottom:8px}
+.summary{font-size:15px;color:#555;margin-bottom:16px;line-height:1.7}
+.distro-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-bottom:28px}
+section{margin-bottom:36px}
+.section-header{font-size:20px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.badge{font-size:13px;font-weight:600;color:#fff;padding:2px 10px;border-radius:999px}
+.news-item{border-left:4px solid #e0e0e0;padding-left:16px;margin-bottom:28px}
+.headline{font-size:18px;font-weight:700;margin-bottom:6px}
+.headline a{color:inherit;text-decoration:none}
+.headline a:hover{text-decoration:underline}
+.analysis{font-size:16px;line-height:1.7;color:#333;margin:8px 0}
+.news-image{max-width:100%;border-radius:8px;margin:10px 0;max-height:400px;object-fit:cover;display:block}
+.video-link{display:inline-block;margin:8px 0;padding:6px 14px;background:#f5f5f5;border-radius:16px;font-size:14px;color:#333;text-decoration:none}
+.video-link:hover{background:#e0e0e0}
+.meta{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;color:#999;flex-wrap:wrap}
+.tag{background:#f0f0f0;padding:1px 8px;border-radius:10px;font-size:12px}
+.original-link{color:#666;text-decoration:none}
+.original-link:hover{text-decoration:underline}
+.feedback{margin-top:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.fb-label{font-size:13px;color:#999}
+.fb-btn{font-size:18px;padding:4px 14px;border:1.5px solid #e0e0e0;border-radius:18px;background:#fafafa;cursor:pointer;transition:all .2s;color:inherit}
+.fb-btn:hover{background:#f0f0f0;border-color:#ccc;transform:scale(1.1)}
+.fb-btn.like:hover{border-color:#4caf50;background:#e8f5e9}
+.fb-btn.dislike:hover{border-color:#f44336;background:#ffebee}
+.fb-reason-toggle{font-size:14px;padding:2px 6px;border:none;background:none;color:#999;cursor:pointer}
+.fb-reasons{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.fb-btn.reason{font-size:13px;padding:2px 8px}
+.fb-msg{font-size:13px;margin-left:8px;min-width:60px}
+.pref-panel{margin-top:40px;padding:20px;background:#fafafa;border-radius:12px;border:1px solid #eee}
+.pref-panel h2{font-size:16px;font-weight:700;margin-bottom:6px}
+.pref-intro{font-size:14px;color:#666;margin-bottom:12px}
+.pref-actions{display:flex;gap:8px;flex-wrap:wrap}
+.pref-btn{font-size:14px;padding:6px 16px;border-radius:20px;text-decoration:none;border:1.5px solid #e0e0e0;background:#fff;color:#333;transition:all .2s}
+.pref-btn:hover{border-color:#999}
+.score-badge{font-size:12px;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:6px}
+.score-high{background:#e8f5e9;color:#2e7d32}.score-mid{background:#fff3e0;color:#e65100}.score-low{background:#ffebee;color:#c62828}
+.interest-highlight{display:inline-block;background:#e3f2fd;color:#1565c0;font-size:12px;padding:2px 8px;border-radius:10px;margin-left:6px;animation:pulse 3s ease-in-out}
+.ongoing-badge{display:inline-block;background:#f3e5f5;color:#6a1b9a;font-size:12px;padding:2px 8px;border-radius:10px;margin-left:6px}
+.comment-section{margin-top:10px;padding:10px 14px;background:#fafafa;border-radius:8px;font-size:14px;color:#555;border-left:3px solid #ff9800}
+.comment-section strong{color:#e65100}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.metrics-footer{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:8px 0;font-size:12px;color:#aaa}
+.pref-btn.boost:hover{border-color:#4caf50;background:#e8f5e9}
+.pref-btn.reduce:hover{border-color:#f44336;background:#ffebee}
+.pref-btn.custom:hover{border-color:#1976d2;background:#e3f2fd}
+.serendipity-note{font-size:13px;color:#999;margin-bottom:12px;font-style:italic}
+footer{margin-top:32px;padding-top:20px;border-top:1px solid #eee;font-size:13px;color:#999;text-align:center}
+footer p{margin-bottom:4px}
+@media(prefers-color-scheme:dark){
+body{background:#1a1a1a;color:#e0e0e0}
+.card{background:#2a2a2a;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.headline,.headline a{color:#f0f0f0}
+.analysis{color:#ccc}
+.meta,.source,.fb-label{color:#888}
+.tag{background:#3a3a3a}
+.fb-btn{background:#333;border-color:#555;color:#ddd}
+.fb-btn:hover{background:#444}
+.video-link{background:#333;color:#ddd}
+.pref-panel{background:#333;border-color:#444}
+.pref-btn{background:#333;border-color:#555;color:#ddd}
+footer{border-top-color:#333;color:#888}
+}
+@media(max-width:480px){
+.card{padding:16px;border-radius:8px}
+h1{font-size:22px}
+.headline{font-size:16px}
+.analysis{font-size:15px}
+.news-image{max-height:240px}
+.news-item{padding-left:12px}
+}
+@media print{
+.feedback,.pref-panel,.fb-reason-toggle,.fb-reasons{display:none!important}
+body{background:#fff}
+.card{box-shadow:none;border:none}
+}
+</style>
+</head>
+<body>
+<div class="card">
+
+<header>
+<h1>每日新闻简报</h1>
+<p class="date">2026年5月29日 周四 · 采集时间 06:15</p>
+<p class="summary"><strong>今日要闻：</strong>今日新闻涵盖时政要闻、科技商业、海外、科学、财经和文化等多个领域，包括美伊协议进展、AI技术发展、金融市场动态等重要内容。</p>
+<div class="distro-bar">
+<span style="background:#0075de;flex:1" title="时政要闻 35%"></span>
+<span style="background:#0075de;flex:1" title="科技商业 30%"></span>
+<span style="background:#0075de;flex:1" title="海外 15%"></span>
+<span style="background:#0075de;flex:1" title="科学 10%"></span>
+<span style="background:#0075de;flex:1" title="财经 10%"></span>
+</div>
+</header>
+
+<section id="mainland">
+<h2 class="section-header"> 时政要闻 <span class="badge" style="background:#0075de">35%</span></h2>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_1" data-source="新浪" data-section="时政要闻">
+<h3 class="headline"><a href="https://example.com/news/1" target="_blank" rel="noopener">美石油巨头：未来数周原油库存将跌至低位 油价或暴涨</a></h3>
+<p class="analysis">这是关于美石油巨头：未来数周原油库存将跌至低位 油价或暴涨的简要分析。</p>
+<div class="meta"><span class="source">新浪</span><span class="tag">时政要闻</span><a href="https://example.com/news/1" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_1','like','美石油巨头：未来数周原油库存将跌至低位 油价或暴涨','新浪','时政要闻')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_1','dislike','美石油巨头：未来数周原油库存将跌至低位 油价或暴涨','新浪','时政要闻')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_1','dislike','美石油巨头：未来数周原油库存将跌至低位 油价或暴涨','新浪','时政要闻','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_1','dislike','美石油巨头：未来数周原油库存将跌至低位 油价或暴涨','新浪','时政要闻','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_1','dislike','美石油巨头：未来数周原油库存将跌至低位 油价或暴涨','新浪','时政要闻','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_1','dislike','美石油巨头：未来数周原油库存将跌至低位 油价或暴涨','新浪','时政要闻','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_2" data-source="新浪" data-section="时政要闻">
+<h3 class="headline"><a href="https://example.com/news/2" target="_blank" rel="noopener">美国代理司法部长：古巴前领导人劳尔·卡斯特罗需要到场受审</a></h3>
+<p class="analysis">这是关于美国代理司法部长：古巴前领导人劳尔·卡斯特罗需要到场受审的简要分析。</p>
+<div class="meta"><span class="source">新浪</span><span class="tag">时政要闻</span><a href="https://example.com/news/2" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_2','like','美国代理司法部长：古巴前领导人劳尔·卡斯特罗需要到场受审','新浪','时政要闻')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_2','dislike','美国代理司法部长：古巴前领导人劳尔·卡斯特罗需要到场受审','新浪','时政要闻')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_2','dislike','美国代理司法部长：古巴前领导人劳尔·卡斯特罗需要到场受审','新浪','时政要闻','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_2','dislike','美国代理司法部长：古巴前领导人劳尔·卡斯特罗需要到场受审','新浪','时政要闻','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_2','dislike','美国代理司法部长：古巴前领导人劳尔·卡斯特罗需要到场受审','新浪','时政要闻','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_2','dislike','美国代理司法部长：古巴前领导人劳尔·卡斯特罗需要到场受审','新浪','时政要闻','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_3" data-source="新浪" data-section="时政要闻">
+<h3 class="headline"><a href="https://example.com/news/3" target="_blank" rel="noopener">纽约汇市：美伊协议报道拖累美元走低 新西兰元领涨</a></h3>
+<p class="analysis">这是关于纽约汇市：美伊协议报道拖累美元走低 新西兰元领涨的简要分析。</p>
+<div class="meta"><span class="source">新浪</span><span class="tag">时政要闻</span><a href="https://example.com/news/3" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_3','like','纽约汇市：美伊协议报道拖累美元走低 新西兰元领涨','新浪','时政要闻')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_3','dislike','纽约汇市：美伊协议报道拖累美元走低 新西兰元领涨','新浪','时政要闻')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_3','dislike','纽约汇市：美伊协议报道拖累美元走低 新西兰元领涨','新浪','时政要闻','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_3','dislike','纽约汇市：美伊协议报道拖累美元走低 新西兰元领涨','新浪','时政要闻','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_3','dislike','纽约汇市：美伊协议报道拖累美元走低 新西兰元领涨','新浪','时政要闻','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_3','dislike','纽约汇市：美伊协议报道拖累美元走低 新西兰元领涨','新浪','时政要闻','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_4" data-source="新浪" data-section="时政要闻">
+<h3 class="headline"><a href="https://example.com/news/4" target="_blank" rel="noopener">美国股市：美股三个主要股指创新高 美伊协议报道提振风险偏好</a></h3>
+<p class="analysis">这是关于美国股市：美股三个主要股指创新高 美伊协议报道提振风险偏好的简要分析。</p>
+<div class="meta"><span class="source">新浪</span><span class="tag">时政要闻</span><a href="https://example.com/news/4" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_4','like','美国股市：美股三个主要股指创新高 美伊协议报道提振风险偏好','新浪','时政要闻')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_4','dislike','美国股市：美股三个主要股指创新高 美伊协议报道提振风险偏好','新浪','时政要闻')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_4','dislike','美国股市：美股三个主要股指创新高 美伊协议报道提振风险偏好','新浪','时政要闻','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_4','dislike','美国股市：美股三个主要股指创新高 美伊协议报道提振风险偏好','新浪','时政要闻','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_4','dislike','美国股市：美股三个主要股指创新高 美伊协议报道提振风险偏好','新浪','时政要闻','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_4','dislike','美国股市：美股三个主要股指创新高 美伊协议报道提振风险偏好','新浪','时政要闻','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_5" data-source="新浪" data-section="时政要闻">
+<h3 class="headline"><a href="https://example.com/news/5" target="_blank" rel="noopener">亚马逊员工刷AI数据致算力成本激增 公司关闭使用量排行榜</a></h3>
+<p class="analysis">这是关于亚马逊员工刷AI数据致算力成本激增 公司关闭使用量排行榜的简要分析。</p>
+<div class="meta"><span class="source">新浪</span><span class="tag">时政要闻</span><a href="https://example.com/news/5" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_5','like','亚马逊员工刷AI数据致算力成本激增 公司关闭使用量排行榜','新浪','时政要闻')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_5','dislike','亚马逊员工刷AI数据致算力成本激增 公司关闭使用量排行榜','新浪','时政要闻')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_5','dislike','亚马逊员工刷AI数据致算力成本激增 公司关闭使用量排行榜','新浪','时政要闻','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_5','dislike','亚马逊员工刷AI数据致算力成本激增 公司关闭使用量排行榜','新浪','时政要闻','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_5','dislike','亚马逊员工刷AI数据致算力成本激增 公司关闭使用量排行榜','新浪','时政要闻','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_5','dislike','亚马逊员工刷AI数据致算力成本激增 公司关闭使用量排行榜','新浪','时政要闻','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_6" data-source="新浪" data-section="时政要闻">
+<h3 class="headline"><a href="https://example.com/news/6" target="_blank" rel="noopener">5月29日外盘头条：特朗普称美国在对伊谈判中掌握所有筹码 戴尔营收同比激增近88% Anthropic估值超越OpenAI</a></h3>
+<p class="analysis">这是关于5月29日外盘头条：特朗普称美国在对伊谈判中掌握所有筹码 戴尔营收同比激增近88% Anthropic估值超越OpenAI的简要分析。</p>
+<div class="meta"><span class="source">新浪</span><span class="tag">时政要闻</span><a href="https://example.com/news/6" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_6','like','5月29日外盘头条：特朗普称美国在对伊谈判中掌握所有筹码 戴尔营收同比激增近88% Anthropic估值超越OpenAI','新浪','时政要闻')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_6','dislike','5月29日外盘头条：特朗普称美国在对伊谈判中掌握所有筹码 戴尔营收同比激增近88% Anthropic估值超越OpenAI','新浪','时政要闻')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_6','dislike','5月29日外盘头条：特朗普称美国在对伊谈判中掌握所有筹码 戴尔营收同比激增近88% Anthropic估值超越OpenAI','新浪','时政要闻','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_6','dislike','5月29日外盘头条：特朗普称美国在对伊谈判中掌握所有筹码 戴尔营收同比激增近88% Anthropic估值超越OpenAI','新浪','时政要闻','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_6','dislike','5月29日外盘头条：特朗普称美国在对伊谈判中掌握所有筹码 戴尔营收同比激增近88% Anthropic估值超越OpenAI','新浪','时政要闻','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_6','dislike','5月29日外盘头条：特朗普称美国在对伊谈判中掌握所有筹码 戴尔营收同比激增近88% Anthropic估值超越OpenAI','新浪','时政要闻','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_7" data-source="新浪" data-section="时政要闻">
+<h3 class="headline"><a href="https://example.com/news/7" target="_blank" rel="noopener">特朗普：美国在对伊谈判中掌握所有筹码</a></h3>
+<p class="analysis">这是关于特朗普：美国在对伊谈判中掌握所有筹码的简要分析。</p>
+<div class="meta"><span class="source">新浪</span><span class="tag">时政要闻</span><a href="https://example.com/news/7" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_7','like','特朗普：美国在对伊谈判中掌握所有筹码','新浪','时政要闻')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_7','dislike','特朗普：美国在对伊谈判中掌握所有筹码','新浪','时政要闻')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_7','dislike','特朗普：美国在对伊谈判中掌握所有筹码','新浪','时政要闻','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_7','dislike','特朗普：美国在对伊谈判中掌握所有筹码','新浪','时政要闻','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_7','dislike','特朗普：美国在对伊谈判中掌握所有筹码','新浪','时政要闻','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_7','dislike','特朗普：美国在对伊谈判中掌握所有筹码','新浪','时政要闻','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_8" data-source="新浪" data-section="时政要闻">
+<h3 class="headline"><a href="https://example.com/news/8" target="_blank" rel="noopener">戴尔上调AI服务器销售额展望 预计本财年达600亿美元</a></h3>
+<p class="analysis">这是关于戴尔上调AI服务器销售额展望 预计本财年达600亿美元的简要分析。</p>
+<div class="meta"><span class="source">新浪</span><span class="tag">时政要闻</span><a href="https://example.com/news/8" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_8','like','戴尔上调AI服务器销售额展望 预计本财年达600亿美元','新浪','时政要闻')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_8','dislike','戴尔上调AI服务器销售额展望 预计本财年达600亿美元','新浪','时政要闻')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_8','dislike','戴尔上调AI服务器销售额展望 预计本财年达600亿美元','新浪','时政要闻','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_8','dislike','戴尔上调AI服务器销售额展望 预计本财年达600亿美元','新浪','时政要闻','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_8','dislike','戴尔上调AI服务器销售额展望 预计本财年达600亿美元','新浪','时政要闻','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_8','dislike','戴尔上调AI服务器销售额展望 预计本财年达600亿美元','新浪','时政要闻','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_9" data-source="新浪" data-section="时政要闻">
+<h3 class="headline"><a href="https://example.com/news/9" target="_blank" rel="noopener">5月29日美股成交额前20：微软将于下周推出多款自研AI模型</a></h3>
+<p class="analysis">这是关于5月29日美股成交额前20：微软将于下周推出多款自研AI模型的简要分析。</p>
+<div class="meta"><span class="source">新浪</span><span class="tag">时政要闻</span><a href="https://example.com/news/9" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_9','like','5月29日美股成交额前20：微软将于下周推出多款自研AI模型','新浪','时政要闻')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_9','dislike','5月29日美股成交额前20：微软将于下周推出多款自研AI模型','新浪','时政要闻')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_9','dislike','5月29日美股成交额前20：微软将于下周推出多款自研AI模型','新浪','时政要闻','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_9','dislike','5月29日美股成交额前20：微软将于下周推出多款自研AI模型','新浪','时政要闻','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_9','dislike','5月29日美股成交额前20：微软将于下周推出多款自研AI模型','新浪','时政要闻','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_9','dislike','5月29日美股成交额前20：微软将于下周推出多款自研AI模型','新浪','时政要闻','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_10" data-source="新浪" data-section="时政要闻">
+<h3 class="headline"><a href="https://example.com/news/10" target="_blank" rel="noopener">戴尔一季度AI服务器营收同比增长757% 股价盘后大涨超25%</a></h3>
+<p class="analysis">这是关于戴尔一季度AI服务器营收同比增长757% 股价盘后大涨超25%的简要分析。</p>
+<div class="meta"><span class="source">新浪</span><span class="tag">时政要闻</span><a href="https://example.com/news/10" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_10','like','戴尔一季度AI服务器营收同比增长757% 股价盘后大涨超25%','新浪','时政要闻')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_10','dislike','戴尔一季度AI服务器营收同比增长757% 股价盘后大涨超25%','新浪','时政要闻')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_10','dislike','戴尔一季度AI服务器营收同比增长757% 股价盘后大涨超25%','新浪','时政要闻','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_10','dislike','戴尔一季度AI服务器营收同比增长757% 股价盘后大涨超25%','新浪','时政要闻','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_10','dislike','戴尔一季度AI服务器营收同比增长757% 股价盘后大涨超25%','新浪','时政要闻','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_10','dislike','戴尔一季度AI服务器营收同比增长757% 股价盘后大涨超25%','新浪','时政要闻','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+</section>
+<section id="tech">
+<h2 class="section-header"> 科技商业 <span class="badge" style="background:#0075de">30%</span></h2>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_11" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/11" target="_blank" rel="noopener">The internet is being rebuilt for machines</a></h3>
+<p class="analysis">这是关于The internet is being rebuilt for machines的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/11" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_11','like','The internet is being rebuilt for machines','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_11','dislike','The internet is being rebuilt for machines','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_11','dislike','The internet is being rebuilt for machines','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_11','dislike','The internet is being rebuilt for machines','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_11','dislike','The internet is being rebuilt for machines','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_11','dislike','The internet is being rebuilt for machines','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_12" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/12" target="_blank" rel="noopener">Slate Auto will announce pricing and take preorders for its EV on June 24</a></h3>
+<p class="analysis">这是关于Slate Auto will announce pricing and take preorders for its EV on June 24的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/12" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_12','like','Slate Auto will announce pricing and take preorders for its EV on June 24','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_12','dislike','Slate Auto will announce pricing and take preorders for its EV on June 24','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_12','dislike','Slate Auto will announce pricing and take preorders for its EV on June 24','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_12','dislike','Slate Auto will announce pricing and take preorders for its EV on June 24','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_12','dislike','Slate Auto will announce pricing and take preorders for its EV on June 24','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_12','dislike','Slate Auto will announce pricing and take preorders for its EV on June 24','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_13" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/13" target="_blank" rel="noopener">Asana acquires no-code agent-builder StackAI</a></h3>
+<p class="analysis">这是关于Asana acquires no-code agent-builder StackAI的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/13" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_13','like','Asana acquires no-code agent-builder StackAI','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_13','dislike','Asana acquires no-code agent-builder StackAI','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_13','dislike','Asana acquires no-code agent-builder StackAI','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_13','dislike','Asana acquires no-code agent-builder StackAI','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_13','dislike','Asana acquires no-code agent-builder StackAI','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_13','dislike','Asana acquires no-code agent-builder StackAI','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_14" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/14" target="_blank" rel="noopener">Bluesky embraces long-form content to counter X Articles</a></h3>
+<p class="analysis">这是关于Bluesky embraces long-form content to counter X Articles的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/14" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_14','like','Bluesky embraces long-form content to counter X Articles','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_14','dislike','Bluesky embraces long-form content to counter X Articles','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_14','dislike','Bluesky embraces long-form content to counter X Articles','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_14','dislike','Bluesky embraces long-form content to counter X Articles','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_14','dislike','Bluesky embraces long-form content to counter X Articles','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_14','dislike','Bluesky embraces long-form content to counter X Articles','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_15" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/15" target="_blank" rel="noopener">Hackers are trying to steal Signal users’ backups in new wave of phishing attacks</a></h3>
+<p class="analysis">这是关于Hackers are trying to steal Signal users’ backups in new wave of phishing attacks的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/15" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_15','like','Hackers are trying to steal Signal users’ backups in new wave of phishing attacks','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_15','dislike','Hackers are trying to steal Signal users’ backups in new wave of phishing attacks','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_15','dislike','Hackers are trying to steal Signal users’ backups in new wave of phishing attacks','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_15','dislike','Hackers are trying to steal Signal users’ backups in new wave of phishing attacks','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_15','dislike','Hackers are trying to steal Signal users’ backups in new wave of phishing attacks','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_15','dislike','Hackers are trying to steal Signal users’ backups in new wave of phishing attacks','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_16" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/16" target="_blank" rel="noopener">Anthropic raises $65 billion, nears $1T valuation ahead of IPO</a></h3>
+<p class="analysis">这是关于Anthropic raises $65 billion, nears $1T valuation ahead of IPO的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/16" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_16','like','Anthropic raises $65 billion, nears $1T valuation ahead of IPO','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_16','dislike','Anthropic raises $65 billion, nears $1T valuation ahead of IPO','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_16','dislike','Anthropic raises $65 billion, nears $1T valuation ahead of IPO','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_16','dislike','Anthropic raises $65 billion, nears $1T valuation ahead of IPO','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_16','dislike','Anthropic raises $65 billion, nears $1T valuation ahead of IPO','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_16','dislike','Anthropic raises $65 billion, nears $1T valuation ahead of IPO','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_17" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/17" target="_blank" rel="noopener">Just like gold and oil, we’ll soon be able to trade AI token futures</a></h3>
+<p class="analysis">这是关于Just like gold and oil, we’ll soon be able to trade AI token futures的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/17" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_17','like','Just like gold and oil, we’ll soon be able to trade AI token futures','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_17','dislike','Just like gold and oil, we’ll soon be able to trade AI token futures','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_17','dislike','Just like gold and oil, we’ll soon be able to trade AI token futures','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_17','dislike','Just like gold and oil, we’ll soon be able to trade AI token futures','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_17','dislike','Just like gold and oil, we’ll soon be able to trade AI token futures','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_17','dislike','Just like gold and oil, we’ll soon be able to trade AI token futures','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_18" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/18" target="_blank" rel="noopener">H1 secures $40M from CVS, proving SaaS startups can still attract investment</a></h3>
+<p class="analysis">这是关于H1 secures $40M from CVS, proving SaaS startups can still attract investment的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/18" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_18','like','H1 secures $40M from CVS, proving SaaS startups can still attract investment','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_18','dislike','H1 secures $40M from CVS, proving SaaS startups can still attract investment','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_18','dislike','H1 secures $40M from CVS, proving SaaS startups can still attract investment','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_18','dislike','H1 secures $40M from CVS, proving SaaS startups can still attract investment','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_18','dislike','H1 secures $40M from CVS, proving SaaS startups can still attract investment','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_18','dislike','H1 secures $40M from CVS, proving SaaS startups can still attract investment','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_19" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/19" target="_blank" rel="noopener">A security lapse at prison pay phone service Pay Tel publicly exposed over 300K callers’ driver’s licenses</a></h3>
+<p class="analysis">这是关于A security lapse at prison pay phone service Pay Tel publicly exposed over 300K callers’ driver’s licenses的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/19" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_19','like','A security lapse at prison pay phone service Pay Tel publicly exposed over 300K callers’ driver’s licenses','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_19','dislike','A security lapse at prison pay phone service Pay Tel publicly exposed over 300K callers’ driver’s licenses','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_19','dislike','A security lapse at prison pay phone service Pay Tel publicly exposed over 300K callers’ driver’s licenses','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_19','dislike','A security lapse at prison pay phone service Pay Tel publicly exposed over 300K callers’ driver’s licenses','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_19','dislike','A security lapse at prison pay phone service Pay Tel publicly exposed over 300K callers’ driver’s licenses','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_19','dislike','A security lapse at prison pay phone service Pay Tel publicly exposed over 300K callers’ driver’s licenses','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_20" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/20" target="_blank" rel="noopener">Why Paris may be the most important AI city outside Silicon Valley</a></h3>
+<p class="analysis">这是关于Why Paris may be the most important AI city outside Silicon Valley的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/20" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_20','like','Why Paris may be the most important AI city outside Silicon Valley','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_20','dislike','Why Paris may be the most important AI city outside Silicon Valley','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_20','dislike','Why Paris may be the most important AI city outside Silicon Valley','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_20','dislike','Why Paris may be the most important AI city outside Silicon Valley','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_20','dislike','Why Paris may be the most important AI city outside Silicon Valley','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_20','dislike','Why Paris may be the most important AI city outside Silicon Valley','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_21" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/21" target="_blank" rel="noopener">In just 3 weeks, StrictlyVC is coming to Los Angeles</a></h3>
+<p class="analysis">这是关于In just 3 weeks, StrictlyVC is coming to Los Angeles的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/21" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_21','like','In just 3 weeks, StrictlyVC is coming to Los Angeles','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_21','dislike','In just 3 weeks, StrictlyVC is coming to Los Angeles','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_21','dislike','In just 3 weeks, StrictlyVC is coming to Los Angeles','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_21','dislike','In just 3 weeks, StrictlyVC is coming to Los Angeles','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_21','dislike','In just 3 weeks, StrictlyVC is coming to Los Angeles','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_21','dislike','In just 3 weeks, StrictlyVC is coming to Los Angeles','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_22" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/22" target="_blank" rel="noopener">Startup Battlefield 200 application deadline extended to June 8 after overwhelming demand</a></h3>
+<p class="analysis">这是关于Startup Battlefield 200 application deadline extended to June 8 after overwhelming demand的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/22" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_22','like','Startup Battlefield 200 application deadline extended to June 8 after overwhelming demand','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_22','dislike','Startup Battlefield 200 application deadline extended to June 8 after overwhelming demand','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_22','dislike','Startup Battlefield 200 application deadline extended to June 8 after overwhelming demand','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_22','dislike','Startup Battlefield 200 application deadline extended to June 8 after overwhelming demand','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_22','dislike','Startup Battlefield 200 application deadline extended to June 8 after overwhelming demand','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_22','dislike','Startup Battlefield 200 application deadline extended to June 8 after overwhelming demand','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_23" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/23" target="_blank" rel="noopener">Corgi announces $106M raise at $2.6B valuation — double what it was worth 3 weeks ago</a></h3>
+<p class="analysis">这是关于Corgi announces $106M raise at $2.6B valuation — double what it was worth 3 weeks ago的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/23" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_23','like','Corgi announces $106M raise at $2.6B valuation — double what it was worth 3 weeks ago','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_23','dislike','Corgi announces $106M raise at $2.6B valuation — double what it was worth 3 weeks ago','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_23','dislike','Corgi announces $106M raise at $2.6B valuation — double what it was worth 3 weeks ago','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_23','dislike','Corgi announces $106M raise at $2.6B valuation — double what it was worth 3 weeks ago','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_23','dislike','Corgi announces $106M raise at $2.6B valuation — double what it was worth 3 weeks ago','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_23','dislike','Corgi announces $106M raise at $2.6B valuation — double what it was worth 3 weeks ago','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_24" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/24" target="_blank" rel="noopener">Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool</a></h3>
+<p class="analysis">这是关于Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/24" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_24','like','Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_24','dislike','Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_24','dislike','Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_24','dislike','Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_24','dislike','Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_24','dislike','Anthropic releases Opus 4.8 with new ‘dynamic workflow’ tool','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_25" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/25" target="_blank" rel="noopener">Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders</a></h3>
+<p class="analysis">这是关于Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/25" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_25','like','Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_25','dislike','Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_25','dislike','Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_25','dislike','Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_25','dislike','Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_25','dislike','Waymo’s newest robotaxi is Chinese-made, built to make money, and now accepting riders','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_26" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/26" target="_blank" rel="noopener">US says troops were targeted with location data, as senator warns ad industry is a ‘national security threat’</a></h3>
+<p class="analysis">这是关于US says troops were targeted with location data, as senator warns ad industry is a ‘national security threat’的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/26" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_26','like','US says troops were targeted with location data, as senator warns ad industry is a ‘national security threat’','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_26','dislike','US says troops were targeted with location data, as senator warns ad industry is a ‘national security threat’','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_26','dislike','US says troops were targeted with location data, as senator warns ad industry is a ‘national security threat’','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_26','dislike','US says troops were targeted with location data, as senator warns ad industry is a ‘national security threat’','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_26','dislike','US says troops were targeted with location data, as senator warns ad industry is a ‘national security threat’','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_26','dislike','US says troops were targeted with location data, as senator warns ad industry is a ‘national security threat’','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_27" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/27" target="_blank" rel="noopener">How long is Anthropic’s lease with SpaceX? Opinions vary</a></h3>
+<p class="analysis">这是关于How long is Anthropic’s lease with SpaceX? Opinions vary的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/27" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_27','like','How long is Anthropic’s lease with SpaceX? Opinions vary','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_27','dislike','How long is Anthropic’s lease with SpaceX? Opinions vary','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_27','dislike','How long is Anthropic’s lease with SpaceX? Opinions vary','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_27','dislike','How long is Anthropic’s lease with SpaceX? Opinions vary','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_27','dislike','How long is Anthropic’s lease with SpaceX? Opinions vary','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_27','dislike','How long is Anthropic’s lease with SpaceX? Opinions vary','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_28" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/28" target="_blank" rel="noopener">Sesame, the conversational AI startup from Oculus founders, launches its iOS app</a></h3>
+<p class="analysis">这是关于Sesame, the conversational AI startup from Oculus founders, launches its iOS app的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/28" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_28','like','Sesame, the conversational AI startup from Oculus founders, launches its iOS app','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_28','dislike','Sesame, the conversational AI startup from Oculus founders, launches its iOS app','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_28','dislike','Sesame, the conversational AI startup from Oculus founders, launches its iOS app','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_28','dislike','Sesame, the conversational AI startup from Oculus founders, launches its iOS app','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_28','dislike','Sesame, the conversational AI startup from Oculus founders, launches its iOS app','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_28','dislike','Sesame, the conversational AI startup from Oculus founders, launches its iOS app','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_29" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/29" target="_blank" rel="noopener">Sneak peek at new Siri app reveals Apple’s plans to take on ChatGPT and more</a></h3>
+<p class="analysis">这是关于Sneak peek at new Siri app reveals Apple’s plans to take on ChatGPT and more的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/29" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_29','like','Sneak peek at new Siri app reveals Apple’s plans to take on ChatGPT and more','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_29','dislike','Sneak peek at new Siri app reveals Apple’s plans to take on ChatGPT and more','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_29','dislike','Sneak peek at new Siri app reveals Apple’s plans to take on ChatGPT and more','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_29','dislike','Sneak peek at new Siri app reveals Apple’s plans to take on ChatGPT and more','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_29','dislike','Sneak peek at new Siri app reveals Apple’s plans to take on ChatGPT and more','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_29','dislike','Sneak peek at new Siri app reveals Apple’s plans to take on ChatGPT and more','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+<article class="news-item" style="border-left-color:#0075de" data-id="article_30" data-source="TechCrunch" data-section="科技商业">
+<h3 class="headline"><a href="https://example.com/news/30" target="_blank" rel="noopener">Rivian under investigation over rear suspension failures on R1 models</a></h3>
+<p class="analysis">这是关于Rivian under investigation over rear suspension failures on R1 models的简要分析。</p>
+<div class="meta"><span class="source">TechCrunch</span><span class="tag">科技商业</span><a href="https://example.com/news/30" target="_blank" rel="noopener" class="original-link">原文</a></div>
+<div class="feedback"><span class="fb-label">评价：</span><button class="fb-btn like" onclick="sendFeedback('article_30','like','Rivian under investigation over rear suspension failures on R1 models','TechCrunch','科技商业')">👍</button><button class="fb-btn dislike" onclick="sendFeedback('article_30','dislike','Rivian under investigation over rear suspension failures on R1 models','TechCrunch','科技商业')">👎</button><button class="fb-reason-toggle" onclick="var r=this.nextElementSibling;r.hidden=!r.hidden">...</button><div class="fb-reasons" hidden><button class="fb-btn reason" onclick="sendFeedback('article_30','dislike','Rivian under investigation over rear suspension failures on R1 models','TechCrunch','科技商业','too-political')">太政治</button><button class="fb-btn reason" onclick="sendFeedback('article_30','dislike','Rivian under investigation over rear suspension failures on R1 models','TechCrunch','科技商业','already-seen')">已看过</button><button class="fb-btn reason" onclick="sendFeedback('article_30','dislike','Rivian under investigation over rear suspension failures on R1 models','TechCrunch','科技商业','low-quality')">质量差</button><button class="fb-btn reason" onclick="sendFeedback('article_30','dislike','Rivian under investigation over rear suspension failures on R1 models','TechCrunch','科技商业','duplicate')">重复了</button></div><span class="fb-msg"></span></div>
+</article>
+</section>
+<section id="overseas">
+<h2 class="section-header"> 海外 <span class="badge" style="background:#0075de">15%</span></h2>
+
+</section>
+<section id="science">
+<h2 class="section-header"> 科学 <span class="badge" style="background:#0075de">10%</span></h2>
+
+</section>
+<section id="finance">
+<h2 class="section-header"> 财经 <span class="badge" style="background:#0075de">10%</span></h2>
+
+</section>
+
+
+
+<div class="pref-panel">
+<h2>偏好设置</h2>
+<p class="pref-intro">Hermes 会根据你的点赞/踩自动调整新闻。也可以直接告诉它：</p>
+<div class="pref-actions">
+  <button class="pref-btn boost" onclick="sendPreference('more-ai','多看 AI/科技类新闻')">多看 AI 新闻</button>
+  <button class="pref-btn reduce" onclick="sendPreference('less-politics','少推政治类新闻')">少看政治</button>
+  <button class="pref-btn custom" onclick="sendPreference('custom',prompt('你想多看哪方面的新闻？')||'自定义兴趣')">自定义</button>
+</div>
+</div>
+
+<footer>
+<div class="metrics-footer">
+  <span>30条新闻</span>
+  <span>均分-</span>
+  <span>0/0来源</span>
+  <span>~$0.00</span>
+  <span>-</span>
+</div>
+<p>来源分布：</p>
+<p>由 Hermes Agent 自动生成 · 采集时间：2026-05-29 06:15 CST</p>
+<p>点击 👍👎 提供反馈，Hermes 会学习你的偏好 · <a href="https://github.com/linkseinschlafen-dot/linkseinschlafen-dot.github.io/issues?q=label%3Anews-feedback">查看历史</a></p>
+</footer>
+</div>
+
+	<script>
+	var IS_LOCAL = location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+	var FEEDBACK_PORT = '9876';
+	var GH_REPO = 'linkseinschlafen-dot/linkseinschlafen-dot.github.io';
+	var BRIEFING_DATE = '2026-05-29';
+
+	// ── Generic event sender ──────────────────────────────────────────
+	function _postEvent(data) {
+	  if (!IS_LOCAL) return;  // dwell/click only work with local feedback server
+	  fetch('http://localhost:' + FEEDBACK_PORT + '/feedback', {
+	    method: 'POST',
+	    headers: {'Content-Type': 'application/json'},
+	    body: JSON.stringify(data)
+	  }).catch(function(){});
+	}
+
+	// ── Like / Dislike ────────────────────────────────────────────────
+	function sendFeedback(itemId, action, headline, source, section, reason) {
+	  var article = document.querySelector('[data-id="' + itemId + '"]');
+	  var msgEl = article ? article.querySelector('.fb-msg') : null;
+	  var data = {
+	    item_id: itemId, action: action, headline: headline,
+	    source: source, section: section, reason: reason || '',
+	    date: BRIEFING_DATE, timestamp: new Date().toISOString()
+	  };
+
+	  if (IS_LOCAL) {
+	    fetch('http://localhost:' + FEEDBACK_PORT + '/feedback', {
+	      method: 'POST',
+	      headers: {'Content-Type': 'application/json'},
+	      body: JSON.stringify(data)
+	    })
+	    .then(function(r) { return r.json(); })
+	    .then(function(res) {
+	      if (msgEl) { msgEl.textContent = action === 'like' ? '已记录' : '已记录'; msgEl.style.color = '#4caf50'; }
+	      if (article) { highlightBtn(article, action); }
+	    })
+	    .catch(function() {
+	      if (msgEl) { msgEl.textContent = '反馈服务器未运行'; msgEl.style.color = '#ff9800'; }
+	    });
+	  } else {
+	    var labels = ['news-feedback', action, section, source];
+	    if (reason) labels.push(reason);
+	    var url = 'https://github.com/' + GH_REPO + '/issues/new'
+	      + '?title=' + encodeURIComponent('[' + action + '] ' + headline.slice(0, 50))
+	      + '&labels=' + encodeURIComponent(labels.join(','))
+	      + '&body=' + encodeURIComponent(JSON.stringify(data, null, 2));
+	    window.open(url, '_blank');
+	    if (msgEl) { msgEl.textContent = '请在打开的页面提交'; msgEl.style.color = '#1976d2'; }
+	  }
+	}
+
+	function sendPreference(prefType, description) {
+	  if (IS_LOCAL) {
+	    fetch('http://localhost:' + FEEDBACK_PORT + '/feedback', {
+	      method: 'POST',
+	      headers: {'Content-Type': 'application/json'},
+	      body: JSON.stringify({item_id: 'pref-' + Date.now(), action: 'preference', headline: description, source: 'preference-panel', section: prefType, date: BRIEFING_DATE, timestamp: new Date().toISOString()})
+	    }).then(function() { alert('偏好已记录：' + description); }).catch(function() { alert('反馈服务器未运行'); });
+	  } else {
+	    var url = 'https://github.com/' + GH_REPO + '/issues/new'
+	      + '?title=' + encodeURIComponent('pref:' + prefType)
+	      + '&labels=preference,' + prefType
+	      + '&body=' + encodeURIComponent(JSON.stringify({preference: prefType, description: description, date: BRIEFING_DATE, timestamp: new Date().toISOString()}, null, 2));
+	    window.open(url, '_blank');
+	  }
+	}
+
+	function highlightBtn(article, action) {
+	  var btns = article.querySelectorAll('.fb-btn.like, .fb-btn.dislike');
+	  for (var i = 0; i < btns.length; i++) { btns[i].style.opacity = '0.4'; btns[i].style.transform = 'none'; }
+	  var active = article.querySelector('.fb-btn.' + action);
+	  if (active) { active.style.opacity = '1'; active.style.transform = 'scale(1.15)'; }
+	}
+
+	// ── Dwell time tracking ──────────────────────────────────────────
+	// Each article's viewport time is tracked. Dwell data is flushed when
+	// the article leaves the viewport, on page unload, or every 10s for
+	// articles still being read.
+	var dwellTimers = {};
+	var dwellSeconds = {};
+	var dwellFlushed = {};
+
+	function _flushDwell(itemId) {
+	  if (dwellFlushed[itemId]) return;
+	  var sec = dwellSeconds[itemId] || 0;
+	  if (sec < 1) return;  // <1s is noise (scrolling past)
+	  var article = document.querySelector('[data-id="' + itemId + '"]');
+	  var headline = article ? article.querySelector('.headline a') : null;
+	  var source = article ? article.dataset.source : '';
+	  var section = article ? article.dataset.section : '';
+	  _postEvent({
+	    item_id: itemId, action: 'dwell', headline: headline ? headline.textContent.trim() : '',
+	    source: source, section: section, dwell_seconds: Math.round(sec * 10) / 10,
+	    date: BRIEFING_DATE, timestamp: new Date().toISOString()
+	  });
+	  dwellFlushed[itemId] = true;
+	}
+
+	var dwellObserver = new IntersectionObserver(function(entries) {
+	  entries.forEach(function(e) {
+	    var id = e.target.dataset.id || '';
+	    if (!id) return;
+	    if (e.isIntersecting && e.intersectionRatio > 0.3) {
+	      if (!dwellTimers[id]) {
+	        dwellSeconds[id] = dwellSeconds[id] || 0;
+	        dwellTimers[id] = setInterval(function() {
+	          dwellSeconds[id] = (dwellSeconds[id] || 0) + 0.5;
+	        }, 500);
+	      }
+	    } else {
+	      if (dwellTimers[id]) {
+	        clearInterval(dwellTimers[id]);
+	        delete dwellTimers[id];
+	        _flushDwell(id);
+	      }
+	    }
+	  });
+	}, {threshold: [0, 0.3, 0.8]});
+
+	document.querySelectorAll('article.news-item').forEach(function(el) {
+	  dwellObserver.observe(el);
+	});
+
+	// ── Click tracking ──────────────────────────────────────────────
+	// Tracks clicks on headline links and "原文" links for each article
+	document.querySelectorAll('article.news-item .headline a, article.news-item .original-link').forEach(function(el) {
+	  el.addEventListener('click', function(e) {
+	    var article = el.closest('article');
+	    if (!article) return;
+	    var id = article.dataset.id;
+	    var headline = article.querySelector('.headline a');
+	    _postEvent({
+	      item_id: id, action: 'click',
+	      headline: headline ? headline.textContent.trim() : '',
+	      source: article.dataset.source || '',
+	      section: article.dataset.section || '',
+	      click_target: el.classList.contains('original-link') ? 'original_link' : 'headline',
+	      date: BRIEFING_DATE, timestamp: new Date().toISOString()
+	    });
+	  });
+	});
+
+	// Flush dwell data before leaving the page
+	window.addEventListener('beforeunload', function() {
+	  for (var id in dwellTimers) {
+	    if (dwellTimers[id]) { clearInterval(dwellTimers[id]); delete dwellTimers[id]; }
+	    _flushDwell(id);
+	  }
+	});
+
+	// Periodic flush for articles still being read (every 10s)
+	setInterval(function() {
+	  for (var id in dwellSeconds) {
+	    if ((dwellSeconds[id] || 0) >= 5 && !dwellFlushed[id]) _flushDwell(id);
+	  }
+	}, 10000);
+	</script>
+</body>
+</html>

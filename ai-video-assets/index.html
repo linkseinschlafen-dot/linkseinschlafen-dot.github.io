@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI视频资产管理</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="config.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:"Inter","Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f8f9fc;color:#2c3e50;min-height:100vh;line-height:1.6}
@@ -216,13 +215,23 @@ body{font-family:"Inter","Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFa
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
+// Load config.js dynamically (won't break page if missing)
+(function(){
+  var s = document.createElement('script');
+  s.src = 'config.js';
+  s.onerror = function(){ console.warn('config.js not found, using empty token'); };
+  document.head.appendChild(s);
+})();
+
 // ===== Config =====
 const REPO_OWNER = 'linkseinschlafen-dot';
 const REPO_NAME = 'linkseinschlafen-dot.github.io';
 const DATA_PATH = 'ai-video-assets/data/assets.json';
 const DATA_BRANCH = 'main';
 const RELEASE_TAG = 'ai-video-assets';
-const GH_TOKEN = (window.__GH_CONFIG && window.__GH_CONFIG.t) ? window.__GH_CONFIG.t.join('') : '';
+function getGHToken(){
+  return (window.__GH_CONFIG && window.__GH_CONFIG.t) ? window.__GH_CONFIG.t.join('') : '';
+}
 
 let allAssets = [];
 let uploading = false;
@@ -586,14 +595,17 @@ uz.addEventListener('drop', e => {
   }
 });
 
-// ===== Init =====
-if (getToken()) {
-  loadAssets();
-} else {
-  document.getElementById('loadingOverlay').style.display = 'none';
-  document.getElementById('assetGrid').innerHTML =
-    '<div class="empty-state"><div class="empty-art">🔑</div><h3>欢迎使用 AI视频资产管理</h3><p>首次使用请配置 GitHub Token</p></div>';
-}
+// ===== Init (wait for config.js to load or fail) =====
+setTimeout(function(){
+  if (getToken()) {
+    loadAssets();
+  } else {
+    document.getElementById('loadingOverlay').style.display = 'none';
+    document.getElementById('assetGrid').innerHTML =
+      '<div class="empty-state"><div class="empty-art">🔑</div><h3>需要配置 Token</h3><p>请先上传 config.js 或联系管理员</p></div>';
+    document.getElementById('listSubtitle').textContent = 'Token 未配置';
+  }
+}, 500);
 </script>
 </body>
 </html>

@@ -1,0 +1,10 @@
+# Cloudflare Worker - AI视频资产管理 API
+name = "ai-video-assets"
+main = "worker.js"
+compatibility_date = "2025-06-02"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "ai-video-assets-db"
+database_id = "3e2095dc-1532-4ba2-938b-217104a58829"

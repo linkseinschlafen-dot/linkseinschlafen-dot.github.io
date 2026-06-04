@@ -76,10 +76,7 @@ async function handleList(url, env, J) {
   q += ' ORDER BY created_at DESC LIMIT 200';
 
   const stmt = env.DB.prepare(q);
-  // bind params
-  let s = stmt;
-  for (let i = 0; i < params.length; i++) s = s.bind(params[i]);
-  const { results } = await s.all();
+  const { results } = params.length ? await stmt.bind(...params).all() : await stmt.all();
 
   const assets = results.map(r => ({
     id: r.id, type: r.type, name: r.name, owner: r.owner,

@@ -1,0 +1,19 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>AI video asset logo</title>
+  <g stroke="#111827" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="54" y="70" width="148" height="104" rx="22"/>
+    <path d="M54 104h148"/>
+    <path d="M88 70v34"/>
+    <path d="M128 70v34"/>
+    <path d="M168 70v34"/>
+  </g>
+  <g stroke="#4F46E5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="78" y="132" width="34" height="34" rx="8"/>
+    <rect x="129" y="132" width="34" height="34" rx="8"/>
+    <path d="M179 134v-18"/>
+    <path d="M179 152v18"/>
+    <path d="M161 152h-18"/>
+    <path d="M197 152h18"/>
+    <circle cx="179" cy="152" r="5" fill="#4F46E5" stroke="none"/>
+  </g>
+</svg>

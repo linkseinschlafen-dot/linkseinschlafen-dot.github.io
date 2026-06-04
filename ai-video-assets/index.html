@@ -4,151 +4,307 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI视频资产管理</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ===== Design System ===== */
+:root {
+  --bg: #f9fafb;
+  --surface: #fff;
+  --border: #e9ebf0;
+  --text: #1a1d28;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --accent: #5b5fe3;
+  --accent-light: #eeeffc;
+  --accent-soft: #f5f5ff;
+  --green: #10b981;
+  --green-light: #ecfdf5;
+  --amber: #f59e0b;
+  --amber-light: #fffbeb;
+  --blue: #3b82f6;
+  --blue-light: #eff6ff;
+  --red: #ef4444;
+  --red-light: #fef2f2;
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.04);
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+  --shadow-lg: 0 4px 24px rgba(0,0,0,.08);
+  --font: "Inter","Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Inter","Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f8f9fc;color:#2c3e50;min-height:100vh;line-height:1.6}
-.loading-overlay{position:fixed;inset:0;background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:16px}
-.loading-spinner{width:40px;height:40px;border:3px solid #e2e8f0;border-top-color:#6366f1;border-radius:50%;animation:spin 0.7s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-overlay p{font-size:14px;color:#64748b}
-.nav{background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #eef0f5;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.nav-logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:#1e293b}
-.nav-logo .dot{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
-.online-badge{display:none;align-items:center;gap:5px;font-size:12px;color:#22c55e;font-weight:500}
-.online-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:#22c55e}
-.hero{background:linear-gradient(135deg,#eef2ff 0%,#faf5ff 50%,#ecfdf5 100%);padding:56px 32px 48px;text-align:center;border-bottom:1px solid #eef0f5}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #e2e8f0;border-radius:100px;padding:6px 16px;font-size:13px;font-weight:500;color:#64748b;margin-bottom:20px}
-.hero-badge .live-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero h1{font-size:42px;font-weight:700;background:linear-gradient(135deg,#4f46e5,#7c3aed,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;letter-spacing:-0.5px}
-.hero p{font-size:17px;color:#64748b;max-width:500px;margin:0 auto}
-.container{max-width:1200px;margin:0 auto;padding:32px 24px}
-.section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
-.section-header .icon-box{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
-.icon-upload{background:#eef2ff;color:#6366f1}.icon-list{background:#f0fdf4;color:#22c55e}
-.section-header h2{font-size:22px;font-weight:600;color:#1e293b}
-.section-header span{font-size:14px;color:#94a3b8}
-.card{background:#fff;border-radius:20px;padding:32px;margin-bottom:28px;border:1px solid #f1f5f9;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.02)}
-.form-layout{display:flex;gap:32px;align-items:flex-start}
-.form-main{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.form-main .span-2{grid-column:1/-1}
-.field{display:flex;flex-direction:column;gap:6px}
-.field-label{font-size:13px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.5px}
-.field-label .req{color:#ef4444}
-.field input,.field select,.field textarea{padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:15px;font-family:inherit;color:#1e293b;background:#fafbfc;transition:all 0.2s;outline:none}
-.field input::placeholder,.field textarea::placeholder{color:#cbd5e1}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:#818cf8;box-shadow:0 0 0 3px rgba(99,102,241,0.08);background:#fff}
-.field textarea{resize:vertical;min-height:90px}
-.field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
-.field input:disabled,.field select:disabled,.field textarea:disabled{opacity:0.6;cursor:not-allowed}
-.upload-zone{flex:0 0 280px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #e2e8f0;border-radius:16px;padding:36px 24px;text-align:center;cursor:pointer;transition:all 0.2s;background:#fafbfc;min-height:200px;position:relative}
-.upload-zone:hover,.upload-zone.dragover{border-color:#818cf8;background:#f8f9ff}
-.upload-zone .upload-icon{width:52px;height:52px;border-radius:14px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
-.upload-zone .upload-text{font-size:14px;font-weight:600;color:#475569}
-.upload-zone .upload-hint{font-size:12px;color:#94a3b8;margin-top:4px}
-.upload-zone .file-name{font-size:13px;color:#6366f1;font-weight:500;margin-top:10px;word-break:break-all}
-.upload-zone .file-size{font-size:11px;color:#cbd5e1;margin-top:2px}
-.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
-.upload-progress{margin-top:12px;width:100%;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden;display:none}
-.upload-progress .bar{height:100%;background:linear-gradient(90deg,#6366f1,#8b5cf6);border-radius:2px;transition:width 0.3s;width:0%}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border:none;border-radius:12px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:all 0.2s;white-space:nowrap}
-.btn:disabled{opacity:0.5;cursor:not-allowed;pointer-events:none}
-.btn-primary{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;box-shadow:0 2px 8px rgba(99,102,241,0.25);padding:12px 28px;font-size:15px}
-.btn-primary:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 16px rgba(99,102,241,0.35)}
-.btn-secondary{background:#f1f5f9;color:#475569}.btn-secondary:hover:not(:disabled){background:#e2e8f0}
-.btn-ghost{background:transparent;color:#64748b;padding:8px 12px}.btn-ghost:hover{background:#f1f5f9;color:#475569}
-.btn-danger-text{background:transparent;color:#ef4444;padding:6px 12px;font-size:13px}.btn-danger-text:hover{background:#fef2f2}
-.btn-download{background:#f0fdf4;color:#15803d;padding:6px 12px;font-size:12px}.btn-download:hover{background:#dcfce7}
-.btn-sm{padding:6px 14px;font-size:13px}
-.btn-group{display:flex;gap:10px;margin-top:24px}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
-.stat-card{background:#fff;border-radius:16px;padding:20px 24px;border:1px solid #f1f5f9;display:flex;align-items:center;gap:16px;transition:all 0.2s}
-.stat-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.06)}
-.stat-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.stat-icon.all{background:#eef2ff;color:#6366f1}.stat-icon.scene{background:#e0f2fe;color:#0ea5e9}
-.stat-icon.character{background:#fff7ed;color:#f97316}.stat-icon.prop{background:#f0fdf4;color:#22c55e}
-.stat-info .stat-num{font-size:28px;font-weight:700;color:#1e293b;line-height:1.1}
-.stat-info .stat-label{font-size:13px;color:#94a3b8;margin-top:2px}
-.toolbar{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-.toolbar-left{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.toolbar select,.toolbar input{padding:10px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14px;font-family:inherit;color:#1e293b;background:#fff;outline:none;transition:all 0.2s}
-.toolbar select:focus,.toolbar input:focus{border-color:#818cf8;box-shadow:0 0 0 3px rgba(99,102,241,0.06)}
-.toolbar select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
-.toolbar input{width:240px}.toolbar input::placeholder{color:#cbd5e1}
-.asset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
-.asset-card{background:#fff;border-radius:16px;padding:20px 24px;border:1px solid #f1f5f9;transition:all 0.2s;display:flex;flex-direction:column;gap:14px}
-.asset-card:hover{border-color:#e2e8f0;box-shadow:0 4px 16px rgba(0,0,0,0.05);transform:translateY(-1px)}
-.asset-card-header{display:flex;align-items:flex-start;justify-content:space-between}
-.asset-card-header .badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600}
-.badge-scene{background:#e0f2fe;color:#0369a1}.badge-character{background:#fff7ed;color:#c2410c}.badge-prop{background:#f0fdf4;color:#15803d}
-.asset-card-header .time{font-size:12px;color:#cbd5e1}
-.asset-card-body h3{font-size:16px;font-weight:600;color:#1e293b}
-.asset-card-body .meta{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap;font-size:13px;color:#94a3b8}
-.asset-card-body .meta span{display:inline-flex;align-items:center;gap:4px}
-.asset-card-body .note{margin-top:10px;padding:10px 14px;background:#f8fafc;border-radius:10px;font-size:13px;color:#64748b;line-height:1.5}
-.asset-card-body .file-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:#f1f5f9;border-radius:8px;font-size:12px;color:#475569}
-.asset-card-footer{display:flex;gap:8px;margin-top:auto;padding-top:8px;border-top:1px solid #f8fafc}
-.empty-state{text-align:center;padding:64px 24px;grid-column:1/-1}
-.empty-state .empty-art{width:80px;height:80px;margin:0 auto 20px;border-radius:20px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:36px}
-.empty-state h3{font-size:18px;color:#64748b;margin-bottom:6px}
-.empty-state p{font-size:14px;color:#cbd5e1}
-.toast-container{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
-.toast{padding:14px 24px;border-radius:14px;font-size:14px;font-weight:600;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);animation:toastIn 0.35s ease;display:flex;align-items:center;gap:8px;white-space:nowrap}
-.toast.success{color:#15803d}.toast.error{color:#dc2626}
-@keyframes toastIn{from{opacity:0;transform:translateY(-12px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
-.footer{text-align:center;padding:40px 24px;color:#cbd5e1;font-size:13px}
-/* Token Setup Modal */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;z-index:10000;backdrop-filter:blur(4px)}
-.modal{background:#fff;border-radius:20px;padding:36px;max-width:520px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.15)}
-.modal h3{font-size:20px;font-weight:700;color:#1e293b;margin-bottom:8px}
-.modal p{font-size:14px;color:#64748b;margin-bottom:20px;line-height:1.6}
-.modal .steps{background:#f8fafc;border-radius:12px;padding:16px 20px;margin-bottom:20px;font-size:13px;color:#475569;line-height:2}
-.modal .steps a{color:#6366f1;font-weight:600}
-.modal input{width:100%;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14px;font-family:monospace;outline:none}
-.modal input:focus{border-color:#818cf8;box-shadow:0 0 0 3px rgba(99,102,241,0.08)}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* ===== Top Bar ===== */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(16px) saturate(1.8);
+  border-bottom:1px solid var(--border);
+  padding:0 28px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.topbar-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--text);letter-spacing:-0.2px}
+.topbar-brand .mark{
+  width:30px;height:30px;border-radius:9px;
+  background:linear-gradient(135deg,#5b5fe3,#7c3aed);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+.topbar-status{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green);font-weight:500}
+.topbar-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.35}}
+.topbar-actions{display:flex;gap:8px}
+
+/* ===== Hero ===== */
+.hero{
+  padding:48px 28px 40px;text-align:center;
+  background:linear-gradient(180deg,#f5f5ff 0%,var(--bg) 100%);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(91,95,227,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:100px;padding:5px 14px;
+  font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:16px;
+  position:relative;
+}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 2s infinite}
+.hero h1{font-size:36px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-0.5px;position:relative}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{font-size:15px;color:var(--text-secondary);max-width:460px;margin:0 auto;position:relative}
+
+/* ===== Layout ===== */
+.container{max-width:1160px;margin:0 auto;padding:28px 24px 48px}
+.section-label{
+  display:flex;align-items:center;gap:10px;margin-bottom:20px;
+}
+.section-label .icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.section-label h2{font-size:19px;font-weight:650;color:var(--text)}
+.section-label .hint{font-size:13px;color:var(--text-muted)}
+
+/* ===== Card ===== */
+.card{
+  background:var(--surface);border-radius:var(--radius-lg);
+  padding:28px;margin-bottom:24px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow-sm);
+}
+
+/* ===== Form ===== */
+.form-row{display:flex;gap:24px;align-items:stretch}
+.form-fields{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-fields .full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:5px}
+.field-label{font-size:12px;font-weight:650;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.4px}
+.field-label .req{color:var(--red)}
+.field input,.field select,.field textarea{
+  padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  font-size:14px;font-family:var(--font);color:var(--text);background:var(--bg);
+  transition:all .15s;outline:none
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light);background:var(--surface)}
+.field textarea{resize:vertical;min-height:80px}
+.field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+
+/* Upload Drop Zone */
+.dropzone{
+  flex:0 0 260px;
+  border:2px dashed var(--border);border-radius:var(--radius);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:28px 20px;text-align:center;cursor:pointer;
+  transition:all .2s;background:var(--bg);position:relative;
+}
+.dropzone:hover,.dropzone.active{border-color:var(--accent);background:var(--accent-soft)}
+.dropzone .dz-icon{
+  width:48px;height:48px;border-radius:12px;background:var(--accent-light);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+  margin-bottom:12px;transition:transform .2s;
+}
+.dropzone:hover .dz-icon{transform:scale(1.08)}
+.dropzone .dz-title{font-size:13px;font-weight:600;color:var(--text)}
+.dropzone .dz-hint{font-size:11px;color:var(--text-muted);margin-top:3px}
+.dropzone .dz-file{font-size:12px;color:var(--accent);font-weight:500;margin-top:8px;word-break:break-all}
+.dropzone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.dropzone .dz-progress{
+  margin-top:10px;width:100%;height:3px;background:var(--border);
+  border-radius:2px;overflow:hidden;display:none;
+}
+.dropzone .dz-progress .bar{
+  height:100%;background:linear-gradient(90deg,var(--accent),#7c3aed);
+  border-radius:2px;width:0%;transition:width .3s;
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:10px 20px;border:none;border-radius:var(--radius-sm);
+  font-size:13px;font-weight:600;font-family:var(--font);
+  cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{
+  background:var(--accent);color:#fff;
+  box-shadow:0 2px 8px rgba(91,95,227,.3);
+  padding:11px 26px;font-size:14px;
+}
+.btn-primary:hover{box-shadow:0 4px 16px rgba(91,95,227,.4);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.btn-ghost{background:transparent;color:var(--text-secondary)}
+.btn-ghost:hover{background:#f3f4f6}
+.btn-secondary{background:#f3f4f6;color:var(--text-secondary)}
+.btn-secondary:hover{background:#e5e7eb}
+.btn-danger{background:transparent;color:var(--red);font-size:12px;padding:6px 10px}
+.btn-danger:hover{background:var(--red-light)}
+.btn-download{background:var(--green-light);color:var(--green);font-size:12px;padding:6px 12px}
+.btn-download:hover{background:#d1fae5}
+.btn-xs{padding:5px 12px;font-size:12px}
+.btn-group{display:flex;gap:10px;margin-top:20px}
+
+/* ===== Stats ===== */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat{
+  background:var(--surface);border-radius:var(--radius);padding:18px 20px;
+  border:1px solid var(--border);display:flex;align-items:center;gap:14px;
+  transition:all .2s;cursor:pointer;
+}
+.stat:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.stat-icon{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
+}
+.stat-icon.all{background:var(--accent-light);color:var(--accent)}
+.stat-icon.scene{background:var(--blue-light);color:var(--blue)}
+.stat-icon.character{background:var(--amber-light);color:var(--amber)}
+.stat-icon.prop{background:var(--green-light);color:var(--green)}
+.stat-num{font-size:26px;font-weight:700;color:var(--text);line-height:1.1}
+.stat-label{font-size:12px;color:var(--text-muted)}
+
+/* ===== Toolbar ===== */
+.toolbar{
+  display:flex;gap:12px;margin-bottom:20px;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;
+}
+.toolbar-left{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.toolbar select,.toolbar input{
+  padding:9px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  font-size:13px;font-family:var(--font);color:var(--text);background:var(--surface);
+  outline:none;transition:all .15s;
+}
+.toolbar select:focus,.toolbar input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
+.toolbar select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:34px}
+.toolbar input{width:220px}
+.toolbar input::placeholder{color:var(--text-muted)}
+.toolbar-count{font-size:12px;color:var(--text-muted)}
+
+/* ===== Asset Grid ===== */
+.asset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.asset-card{
+  background:var(--surface);border-radius:var(--radius);padding:20px;
+  border:1px solid var(--border);transition:all .2s;
+  display:flex;flex-direction:column;gap:12px;
+  animation:fadeUp .35s ease backwards;
+}
+.asset-card:hover{border-color:#d1d5db;box-shadow:var(--shadow);transform:translateY(-1px)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between}
+.card-type{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 9px;border-radius:7px;font-size:11px;font-weight:650;
+}
+.type-scene{background:var(--blue-light);color:#1d4ed8}
+.type-character{background:var(--amber-light);color:#b45309}
+.type-prop{background:var(--green-light);color:#047857}
+.card-time{font-size:11px;color:var(--text-muted)}
+.card-name{font-size:15px;font-weight:650;color:var(--text);line-height:1.3}
+.card-meta{display:flex;gap:12px;font-size:12px;color:var(--text-secondary);flex-wrap:wrap}
+.card-meta span{display:inline-flex;align-items:center;gap:3px}
+.card-file{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:6px 11px;background:#f9fafb;border-radius:8px;
+  font-size:11px;color:var(--text-secondary);margin-top:2px;
+}
+.card-note{
+  padding:10px 14px;background:#f9fafb;border-radius:10px;
+  font-size:12px;color:var(--text-secondary);line-height:1.5;
+}
+.card-actions{display:flex;gap:6px;padding-top:8px;border-top:1px solid #f3f4f6;margin-top:auto}
+
+/* ===== Empty ===== */
+.empty{text-align:center;padding:56px 20px;grid-column:1/-1}
+.empty-art{
+  width:72px;height:72px;margin:0 auto 16px;border-radius:18px;
+  background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:30px;
+}
+.empty h3{font-size:16px;color:var(--text-secondary);margin-bottom:4px}
+.empty p{font-size:13px;color:var(--text-muted)}
+
+/* ===== Toast ===== */
+.toast-container{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:6px;pointer-events:none}
+.toast{
+  padding:12px 22px;border-radius:12px;font-size:13px;font-weight:600;
+  background:var(--surface);box-shadow:var(--shadow-lg);
+  animation:toastIn .3s ease;display:flex;align-items:center;gap:7px;
+}
+.toast.success{color:#047857}.toast.error{color:var(--red)}
+@keyframes toastIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== Footer ===== */
+.footer{text-align:center;padding:32px 20px 40px;font-size:12px;color:var(--text-muted)}
+
+/* ===== Responsive ===== */
 @media(max-width:768px){
-  .hero h1{font-size:28px}.hero{padding:40px 20px 32px}
-  .form-layout{flex-direction:column}.form-main{grid-template-columns:1fr}.form-main .span-2{grid-column:1}
-  .upload-zone{flex:0 0 auto;width:100%}.stats-grid{grid-template-columns:repeat(2,1fr)}
-  .asset-grid{grid-template-columns:1fr}.toolbar{flex-direction:column;align-items:stretch}
-  .toolbar input{width:100%}.nav{padding:0 16px}
+  .hero h1{font-size:26px}.hero{padding:36px 18px 32px}
+  .form-row{flex-direction:column}.form-fields{grid-template-columns:1fr}
+  .form-fields .full{grid-column:1}
+  .dropzone{flex:0 0 auto;width:100%;min-height:160px}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .asset-grid{grid-template-columns:1fr}
+  .toolbar{flex-direction:column;align-items:stretch}
+  .toolbar input{width:100%}
+  .topbar{padding:0 16px}
 }
 </style>
 </head>
 <body>
 
-<div class="loading-overlay" id="loadingOverlay">
-  <div class="loading-spinner"></div><p>加载资产数据...</p>
-</div>
-
-<nav class="nav">
-  <div class="nav-logo"><div class="dot">🎬</div>AI视频资产管理</div>
-  <div class="nav-actions">
-    <span class="online-badge" id="onlineBadge">✅ 已连接</span>
-    <button class="btn btn-secondary btn-sm" onclick="exportCSV()">⬇ 导出CSV</button>
+<!-- Top Bar -->
+<header class="topbar">
+  <div class="topbar-brand">
+    <div class="mark">🎬</div>AI视频资产管理
   </div>
-</nav>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="topbar-status" id="statusBadge" style="display:none">云端同步</span>
+    <button class="btn btn-secondary btn-xs" onclick="exportCSV()">导出 CSV</button>
+  </div>
+</header>
 
+<!-- Hero -->
 <section class="hero">
-  <div class="hero-badge"><span class="live-dot"></span> GitHub 后端 · 免费无限存储</div>
-  <h1>上传资产，生成AI视频</h1>
-  <p>所有人可见，所有人可下载。统一管理场景、人物、道具资产</p>
+  <div class="hero-badge"><span></span>云端协作</div>
+  <h1>上传资产，生成<em>AI视频</em></h1>
+  <p>统一管理场景、人物、道具，所有人可见可下载</p>
 </section>
 
 <div class="container">
-  <div class="section-header">
-    <div class="icon-box icon-upload">📤</div>
-    <div><h2>上传新资产</h2><span>填写信息并上传文件，所有人可见</span></div>
+
+  <!-- Upload -->
+  <div class="section-label">
+    <div class="icon" style="background:var(--accent-light);color:var(--accent)">📤</div>
+    <div><h2>上传资产</h2><span class="hint"> &middot; 填写信息，上传文件</span></div>
   </div>
 
   <div class="card">
-    <div class="form-layout">
-      <div class="form-main">
+    <div class="form-row">
+      <div class="form-fields">
         <div class="field">
           <label class="field-label">资产类型 <span class="req">*</span></label>
           <select id="assetType">
-            <option value="">请选择资产类型</option>
+            <option value="">请选择</option>
             <option value="场景">🎬 场景</option>
             <option value="人物">🧑 人物</option>
             <option value="道具">🎯 道具</option>
@@ -160,287 +316,206 @@ body{font-family:"Inter","Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFa
         </div>
         <div class="field">
           <label class="field-label">负责人 <span class="req">*</span></label>
-          <input type="text" id="assetOwner" placeholder="请输入负责人姓名">
+          <input type="text" id="assetOwner" placeholder="负责人姓名">
         </div>
-        <div class="field span-2">
+        <div class="field full">
           <label class="field-label">备注</label>
           <textarea id="assetNote" placeholder="补充描述、用途说明等（可选）"></textarea>
         </div>
-        <div class="span-2">
+        <div class="full">
           <div class="btn-group">
-            <button class="btn btn-primary" id="submitBtn" onclick="addAsset()">✓ 提交资产</button>
-            <button class="btn btn-secondary" onclick="resetForm()">↺ 重置</button>
+            <button class="btn btn-primary" id="submitBtn" onclick="addAsset()">提交资产</button>
+            <button class="btn btn-secondary" onclick="resetForm()">重置</button>
           </div>
         </div>
       </div>
-      <div class="upload-zone" id="uploadZone">
-        <div class="upload-icon">📁</div>
-        <div class="upload-text">拖拽或点击上传文件</div>
-        <div class="upload-hint">图片 · 视频 · 3D模型</div>
-        <div class="file-name" id="fileName"></div>
-        <div class="file-size" id="fileSize"></div>
-        <div class="upload-progress" id="uploadProgress"><div class="bar" id="progressBar"></div></div>
-        <input type="file" id="assetFile" accept="image/*,video/*,.fbx,.obj,.glb,.gltf,.blend,.abc,.usd,.usdz" onchange="handleFileSelect(event)">
-      </div>
+
+      <label class="dropzone" id="dropzone">
+        <div class="dz-icon">📁</div>
+        <div class="dz-title">点击或拖拽上传</div>
+        <div class="dz-hint">图片 · 视频 · 3D模型</div>
+        <div class="dz-file" id="dzFileName"></div>
+        <div class="dz-progress" id="dzProgress"><div class="bar" id="dzBar"></div></div>
+        <input type="file" id="assetFile" accept="image/*,video/*,.fbx,.obj,.glb,.gltf,.blend,.abc,.usd,.usdz" onchange="onFilePicked(event)">
+      </label>
     </div>
   </div>
 
-  <div class="section-header">
-    <div class="icon-box icon-list">📋</div>
-    <div><h2>资产列表</h2><span id="listSubtitle">正在加载...</span></div>
+  <!-- Asset List -->
+  <div class="section-label">
+    <div class="icon" style="background:var(--green-light);color:var(--green)">📋</div>
+    <div><h2>资产列表</h2><span class="hint" id="listHint"> &middot; 正在加载...</span></div>
   </div>
 
   <div class="card">
-    <div class="stats-grid" id="stats"></div>
+    <div class="stats-row" id="stats"></div>
     <div class="toolbar">
       <div class="toolbar-left">
         <select id="filterType" onchange="renderAll()">
-          <option value="">🔽 全部类型</option>
+          <option value="">全部类型</option>
           <option value="场景">🎬 场景</option>
           <option value="人物">🧑 人物</option>
           <option value="道具">🎯 道具</option>
         </select>
-        <input type="text" id="filterSearch" placeholder="🔍 搜索名称或负责人..." oninput="renderAll()">
-        <span style="font-size:12px;color:#cbd5e1" id="assetCount"></span>
+        <input type="text" id="filterSearch" placeholder="搜索名称或负责人..." oninput="renderAll()">
+        <span class="toolbar-count" id="assetCount"></span>
       </div>
-      <button class="btn btn-danger-text" onclick="clearAll()">🗑 清空全部资产</button>
+      <button class="btn btn-danger" onclick="clearAll()">清空全部</button>
     </div>
     <div class="asset-grid" id="assetGrid">
-      <div class="empty-state"><div class="empty-art">📭</div><h3>加载中...</h3><p>正在获取资产数据</p></div>
+      <div class="empty"><div class="empty-art">📭</div><h3>加载中...</h3><p>正在获取资产数据</p></div>
     </div>
   </div>
+
 </div>
 
-<footer class="footer">AI视频资产管理 · GitHub 后端 · 免费存储 · 所有人可见</footer>
+<footer class="footer">AI视频资产管理 &middot; 云端存储 &middot; 所有人协作</footer>
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-// ===== Config =====
 const API_BASE = 'https://ai-video-assets.b6srv2yc22.workers.dev';
-
 let allAssets = [];
 let uploading = false;
 
-// ===== API =====
-async function api(path, options = {}){
-  const res = await fetch(API_BASE + path, options);
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || '请求失败 (' + res.status + ')');
-  return data;
-}
-
 // ===== Toast =====
-function showToast(msg, type){
-  const el = document.createElement('div');
-  el.className = 'toast ' + type;
-  el.textContent = (type === 'success' ? '✓ ' : '✗ ') + msg;
-  document.getElementById('toastContainer').appendChild(el);
-  setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity 0.3s'; setTimeout(() => el.remove(), 300); }, 2500);
+function toast(msg,t){
+  const e=document.createElement('div');e.className='toast '+t;
+  e.textContent=(t==='success'?'✓ ':'✗ ')+msg;
+  document.getElementById('toastContainer').appendChild(e);
+  setTimeout(()=>{e.style.opacity='0';e.style.transition='opacity .25s';setTimeout(()=>e.remove(),250)},2200);
 }
 
-// ===== File Select =====
-function handleFileSelect(e){
-  const file = e.target.files[0];
-  if (!file) return;
-  const mb = file.size / 1024 / 1024;
-  document.getElementById('fileName').textContent = file.name;
-  document.getElementById('fileSize').textContent = mb >= 1 ? mb.toFixed(2) + ' MB' : (file.size / 1024).toFixed(0) + ' KB';
+// ===== File =====
+function onFilePicked(e){
+  const f=e.target.files[0];if(!f)return;
+  const mb=f.size/1024/1024;
+  document.getElementById('dzFileName').textContent=f.name+' ('+(mb>=1?mb.toFixed(1)+' MB':(f.size/1024).toFixed(0)+' KB')+')';
 }
 
-// ===== Add Asset =====
+// ===== Upload =====
 async function addAsset(){
-  if (uploading) return;
+  if(uploading)return;
+  const type=document.getElementById('assetType').value;
+  const name=document.getElementById('assetName').value.trim();
+  const owner=document.getElementById('assetOwner').value.trim();
+  const note=document.getElementById('assetNote').value.trim();
+  const file=document.getElementById('assetFile').files[0];
+  if(!type)return toast('请选择资产类型','error');
+  if(!name)return toast('请填写资产名称','error');
+  if(!owner)return toast('请填写负责人','error');
 
-  const type = document.getElementById('assetType').value;
-  const name = document.getElementById('assetName').value.trim();
-  const owner = document.getElementById('assetOwner').value.trim();
-  const note = document.getElementById('assetNote').value.trim();
-  const file = document.getElementById('assetFile').files[0];
+  uploading=true;const btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='上传中...';
 
-  if (!type) return showToast('请选择资产类型', 'error');
-  if (!name) return showToast('请填写资产名称', 'error');
-  if (!owner) return showToast('请填写负责人', 'error');
+  try{
+    const fd=new FormData();
+    fd.append('type',type);fd.append('name',name);fd.append('owner',owner);fd.append('note',note);
+    if(file)fd.append('file',file);
 
-  uploading = true;
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true; btn.textContent = '⏳ 上传中...';
-
-  try {
-    if (file) {
-      // multipart upload via XHR for progress tracking
-      const formData = new FormData();
-      formData.append('type', type);
-      formData.append('name', name);
-      formData.append('owner', owner);
-      formData.append('note', note);
-      formData.append('file', file);
-
-      await new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.upload.addEventListener('progress', (e) => {
-          if (e.lengthComputable) {
-            document.getElementById('uploadProgress').style.display = 'block';
-            document.getElementById('progressBar').style.width = (e.loaded / e.total) * 100 + '%';
-          }
-        });
-        xhr.addEventListener('load', () => {
-          if (xhr.status >= 200 && xhr.status < 300) resolve(JSON.parse(xhr.responseText));
-          else {
-            try { reject(new Error(JSON.parse(xhr.responseText).error)); }
-            catch { reject(new Error('上传失败 HTTP ' + xhr.status)); }
-          }
-        });
-        xhr.addEventListener('error', () => reject(new Error('网络错误')));
-        xhr.open('POST', API_BASE + '/api/assets');
-        xhr.send(formData);
+    const xhr=new XMLHttpRequest();
+    await new Promise((resolve,reject)=>{
+      xhr.upload.addEventListener('progress',e=>{
+        if(e.lengthComputable){
+          const p=document.getElementById('dzProgress');p.style.display='block';
+          document.getElementById('dzBar').style.width=(e.loaded/e.total)*100+'%';
+        }
       });
-    } else {
-      // No file, just metadata (JSON POST)
-      await fetch(API_BASE + '/api/assets', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type, name, owner, note })
-      }).then(r => r.json()).then(d => { if (d.error) throw new Error(d.error); });
-    }
-
-    resetForm();
-    document.getElementById('uploadProgress').style.display = 'none';
-    await loadAssets();
-    showToast('资产上传成功！', 'success');
-  } catch (err) {
-    console.error('Upload error:', err);
-    showToast('上传失败：' + (err.message || '未知错误'), 'error');
-  } finally {
-    uploading = false;
-    btn.disabled = false; btn.textContent = '✓ 提交资产';
-    document.getElementById('uploadProgress').style.display = 'none';
-  }
+      xhr.addEventListener('load',()=>{
+        if(xhr.status>=200&&xhr.status<300)resolve(JSON.parse(xhr.responseText));
+        else{try{reject(new Error(JSON.parse(xhr.responseText).error))}catch{reject(new Error('HTTP '+xhr.status))}}
+      });
+      xhr.addEventListener('error',()=>reject(new Error('网络错误')));
+      xhr.open('POST',API_BASE+'/api/assets');xhr.send(fd);
+    });
+    resetForm();document.getElementById('dzProgress').style.display='none';
+    await loadAssets();toast('资产上传成功','success');
+  }catch(err){console.error(err);toast('上传失败：'+(err.message||'未知'),'error')}
+  finally{uploading=false;btn.disabled=false;btn.textContent='提交资产';document.getElementById('dzProgress').style.display='none'}
 }
 
 // ===== Delete =====
 async function deleteAsset(id){
-  if (!confirm('确定要删除该资产吗？')) return;
-  try {
-    await api('/api/assets/' + id, { method: 'DELETE' });
-    allAssets = allAssets.filter(a => a.id !== id);
-    renderAll();
-    showToast('资产已删除', 'success');
-  } catch (err) { showToast('删除失败：' + (err.message || ''), 'error'); }
+  if(!confirm('确定删除？'))return;
+  try{await fetch(API_BASE+'/api/assets/'+id,{method:'DELETE'});allAssets=allAssets.filter(a=>a.id!==id);renderAll();toast('已删除','success')}
+  catch(err){toast('删除失败','error')}
 }
 
 // ===== Download =====
-function downloadAsset(id){
-  window.open(API_BASE + '/api/assets/' + id + '/download', '_blank', 'noopener');
-}
+function downloadAsset(id){window.open(API_BASE+'/api/assets/'+id+'/download','_blank','noopener')}
 
 // ===== Clear All =====
 async function clearAll(){
-  if (!confirm('⚠️ 确定要清空所有云端资产吗？此操作不可恢复！')) return;
-  try {
-    for (const a of allAssets) {
-      try { await api('/api/assets/' + a.id, { method: 'DELETE' }); } catch (e) {}
-    }
-    allAssets = [];
-    renderAll();
-    showToast('所有资产已清空', 'success');
-  } catch (err) { showToast('清空失败：' + (err.message || ''), 'error'); }
+  if(!confirm('⚠️ 确定清空全部资产？不可恢复！'))return;
+  try{for(const a of allAssets)try{await fetch(API_BASE+'/api/assets/'+a.id,{method:'DELETE'})}catch(e){};allAssets=[];renderAll();toast('全部已清空','success')}
+  catch(err){toast('清空失败','error')}
 }
 
-// ===== Load Assets =====
+// ===== Load =====
 async function loadAssets(){
-  try {
-    const data = await api('/api/assets');
-    allAssets = data.assets || [];
-    document.getElementById('loadingOverlay').style.display = 'none';
-    document.getElementById('onlineBadge').style.display = 'inline-flex';
-    document.getElementById('listSubtitle').textContent = '云端同步 · 所有人可见';
-  } catch (err) {
-    console.error('Load error:', err);
-    allAssets = [];
-    document.getElementById('loadingOverlay').style.display = 'none';
-    document.getElementById('listSubtitle').textContent = '连接失败';
-  }
+  try{
+    const res=await fetch(API_BASE+'/api/assets');const data=await res.json();
+    allAssets=data.assets||[];
+    document.getElementById('statusBadge').style.display='inline-flex';
+    document.getElementById('listHint').textContent=' · 云端同步';
+  }catch(err){allAssets=[];document.getElementById('listHint').textContent=' · 连接失败'}
   renderAll();
 }
 
-// ===== Reset Form =====
+// ===== Reset =====
 function resetForm(){
-  ['assetType','assetName','assetOwner','assetFile','assetNote'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('fileName').textContent = '';
-  document.getElementById('fileSize').textContent = '';
+  ['assetType','assetName','assetOwner','assetFile','assetNote'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('dzFileName').textContent='';
 }
 
 // ===== Render =====
-function esc(s){
-  if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML;
-}
-function getBadge(t){
-  const m = {'场景':'badge-scene','人物':'badge-character','道具':'badge-prop'};
-  const i = {'场景':'🎬','人物':'🧑','道具':'🎯'};
-  return '<span class="badge '+(m[t]||'')+'">'+(i[t]||'')+' '+esc(t)+'</span>';
-}
-function formatTime(ts){
-  if (!ts) return ''; const d = new Date(ts);
-  return d.toLocaleString('zh-CN', { hour12: false });
-}
-function renderStats(){
-  const scenes = allAssets.filter(a => a.type === '场景').length;
-  const chars = allAssets.filter(a => a.type === '人物').length;
-  const props = allAssets.filter(a => a.type === '道具').length;
-  document.getElementById('stats').innerHTML = [
-    {icon:'all',label:'总资产',num:allAssets.length,iconChar:'📦'},
-    {icon:'scene',label:'场景',num:scenes,iconChar:'🎬'},
-    {icon:'character',label:'人物',num:chars,iconChar:'🧑'},
-    {icon:'prop',label:'道具',num:props,iconChar:'🎯'}
-  ].map(s => '<div class="stat-card"><div class="stat-icon '+s.icon+'">'+s.iconChar+'</div><div class="stat-info"><div class="stat-num">'+s.num+'</div><div class="stat-label">'+s.label+'</div></div></div>').join('');
-  document.getElementById('assetCount').textContent = '共 ' + allAssets.length + ' 个资产';
-}
-function renderGrid(){
-  const ft = document.getElementById('filterType').value;
-  const fs = document.getElementById('filterSearch').value.toLowerCase();
-  let assets = allAssets;
-  if (ft) assets = assets.filter(a => a.type === ft);
-  if (fs) assets = assets.filter(a => a.name.toLowerCase().includes(fs) || a.owner.toLowerCase().includes(fs));
+const esc=s=>{if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML};
+const badge=(t,i)=>'<span class="card-type '+(i||'')+'">'+t+'</span>';
+const ts=v=>v?new Date(v+(v.endsWith('Z')?'':'Z')).toLocaleString('zh-CN',{hour12:false}):'';
 
-  const grid = document.getElementById('assetGrid');
-  if (assets.length === 0) {
-    grid.innerHTML = '<div class="empty-state"><div class="empty-art">📭</div><h3>暂无资产</h3><p>快去上传第一个资产吧</p></div>';
-    return;
-  }
-  grid.innerHTML = assets.map(a => {
-    const fh = a.file ? '<div class="file-tag">📎 '+esc(a.file.name)+' ('+esc(a.file.size)+')</div>' : '<div class="file-tag" style="opacity:0.5">📎 无文件</div>';
-    const db = a.file ? '<button class="btn btn-download" onclick="downloadAsset(\''+a.id+'\')">⬇ 下载</button>' : '';
-    return '<div class="asset-card">'+
-      '<div class="asset-card-header">'+getBadge(a.type)+'<span class="time">'+formatTime(a.createdAt)+'</span></div>'+
-      '<div class="asset-card-body"><h3>'+esc(a.name)+'</h3><div class="meta"><span>👤 '+esc(a.owner)+'</span></div>'+fh+(a.note?'<div class="note">💬 '+esc(a.note)+'</div>':'')+'</div>'+
-      '<div class="asset-card-footer">'+db+'<button class="btn btn-ghost" onclick="deleteAsset(\''+a.id+'\')">🗑 删除</button></div>'+
+function renderStats(){
+  const s=allAssets.filter(a=>a.type==='场景').length,c=allAssets.filter(a=>a.type==='人物').length,p=allAssets.filter(a=>a.type==='道具').length;
+  document.getElementById('stats').innerHTML=[
+    {c:'all',l:'总资产',n:allAssets.length,e:'📦'},{c:'scene',l:'场景',n:s,e:'🎬'},{c:'character',l:'人物',n:c,e:'🧑'},{c:'prop',l:'道具',n:p,e:'🎯'}
+  ].map(x=>'<div class="stat"><div class="stat-icon '+x.c+'">'+x.e+'</div><div><div class="stat-num">'+x.n+'</div><div class="stat-label">'+x.l+'</div></div></div>').join('');
+  document.getElementById('assetCount').textContent='共 '+allAssets.length+' 个资产';
+}
+
+function renderGrid(){
+  const ft=document.getElementById('filterType').value,fs=document.getElementById('filterSearch').value.toLowerCase();
+  let list=allAssets;if(ft)list=list.filter(a=>a.type===ft);
+  if(fs)list=list.filter(a=>a.name.toLowerCase().includes(fs)||a.owner.toLowerCase().includes(fs));
+  const grid=document.getElementById('assetGrid');
+  if(!list.length){grid.innerHTML='<div class="empty"><div class="empty-art">📭</div><h3>暂无资产</h3><p>上传第一个吧</p></div>';return}
+  grid.innerHTML=list.map((a,i)=>{
+    const ti={'场景':'type-scene','人物':'type-character','道具':'type-prop'},ii={'场景':'🎬','人物':'🧑','道具':'🎯'};
+    const fh=a.file?'<div class="card-file">📎 '+esc(a.file.name)+' ('+esc(a.file.size)+')</div>':'<div class="card-file" style="opacity:.4">无文件</div>';
+    const db=a.file?'<button class="btn btn-download" onclick="downloadAsset(\''+a.id+'\')">下载</button>':'';
+    return '<div class="asset-card" style="animation-delay:'+(i*40)+'ms">'+
+      '<div class="card-top">'+badge((ii[a.type]||'')+' '+a.type,ti[a.type])+'<span class="card-time">'+ts(a.createdAt)+'</span></div>'+
+      '<div class="card-name">'+esc(a.name)+'</div>'+
+      '<div class="card-meta"><span>👤 '+esc(a.owner)+'</span></div>'+
+      fh+(a.note?'<div class="card-note">'+esc(a.note)+'</div>':'')+
+      '<div class="card-actions">'+db+'<button class="btn btn-ghost btn-xs" onclick="deleteAsset(\''+a.id+'\')">删除</button></div>'+
     '</div>';
   }).join('');
 }
-function renderAll(){ renderStats(); renderGrid(); }
+function renderAll(){renderStats();renderGrid()}
 
-// ===== CSV Export =====
+// ===== CSV =====
 function exportCSV(){
-  if (allAssets.length === 0) return showToast('没有可导出的数据', 'error');
-  const h = '类型,名称,负责人,文件名,文件大小,备注,上传时间';
-  const rows = allAssets.map(a => [a.type,a.name,a.owner,a.file?a.file.name:'',a.file?a.file.size:'',a.note||'',formatTime(a.createdAt)].map(v => '"'+v+'"').join(','));
-  const blob = new Blob(['﻿'+h+'\n'+rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const el = document.createElement('a'); el.href = url; el.download = 'AI视频资产_'+new Date().toISOString().slice(0,10)+'.csv';
-  el.click(); URL.revokeObjectURL(url);
-  showToast('CSV导出成功', 'success');
+  if(!allAssets.length)return toast('无数据可导出','error');
+  const rows=allAssets.map(a=>[a.type,a.name,a.owner,a.file?a.file.name:'',a.file?a.file.size:'',a.note||'',ts(a.createdAt)].map(v=>'"'+v+'"').join(','));
+  const b=new Blob(['﻿类型,名称,负责人,文件,大小,备注,时间\n'+rows.join('\n')],{type:'text/csv;charset=utf-8'});
+  const u=URL.createObjectURL(b),el=document.createElement('a');
+  el.href=u;el.download='资产_'+new Date().toISOString().slice(0,10)+'.csv';el.click();URL.revokeObjectURL(u);toast('已导出','success');
 }
 
 // ===== Drag & Drop =====
-const uz = document.getElementById('uploadZone');
-uz.addEventListener('dragover', e => { e.preventDefault(); uz.classList.add('dragover'); });
-uz.addEventListener('dragleave', e => { e.preventDefault(); uz.classList.remove('dragover'); });
-uz.addEventListener('drop', e => {
-  e.preventDefault(); uz.classList.remove('dragover');
-  if (e.dataTransfer.files.length) {
-    document.getElementById('assetFile').files = e.dataTransfer.files;
-    handleFileSelect({ target: { files: e.dataTransfer.files } });
-  }
+const dz=document.getElementById('dropzone');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('active')});
+dz.addEventListener('dragleave',()=>dz.classList.remove('active'));
+dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('active');
+  if(e.dataTransfer.files.length){document.getElementById('assetFile').files=e.dataTransfer.files;onFilePicked({target:{files:e.dataTransfer.files}})}
 });
 
 // ===== Init =====
